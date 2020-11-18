@@ -4,11 +4,19 @@
   border: none;
   background-image: url("../../../images/editbutton.svg");
   background-color: #000;
-  margin-bottom: 16px;
+  align-self: baseline;
+  padding: 0;
+}
+
+@media screen and (max-width: 655px) {
+  .profile__edit-button {
+  }
 }
 
 @media screen and (max-width: 320px) {
   .profile__edit-button {
-    margin-bottom: 14px;
+    width: 18px;
+    height: 18px;
+    background-size: cover;
   }
 }
