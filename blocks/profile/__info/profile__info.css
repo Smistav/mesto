@@ -1,3 +1,13 @@
 .profile__info {
   max-width: 336px;
+  display: flex;
+  flex-wrap: wrap;
+  /* height: calc(73px / 1vh); */
+  align-items: baseline;
+}
+
+@media screen and (max-width: 320px) {
+  .profile__info {
+    justify-content: center;
+  }
 }
