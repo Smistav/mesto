@@ -4,9 +4,14 @@
   border: none;
   background-image: url("../../../images/addbutton.svg");
   background-color: #000;
-
+  border-radius: 2px;
   grid-area: add-button;
   justify-self: end;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 655px) {
@@ -16,11 +21,3 @@
     justify-self: center;
   }
 }
-
-/* @media screen and (max-width: 320px) {
-  .profile__add-button {
-    width: 282px;
-    background-image: url("../../../images/addbutton-mobile.svg");
-    justify-self: center;
-  }
-} */

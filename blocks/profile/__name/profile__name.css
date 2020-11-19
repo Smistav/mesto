@@ -5,8 +5,15 @@
   line-height: 48px;
   margin: 0;
   padding: 0;
+}
 
-  /*justify-self: end; */
+@media screen and (max-width: 655px) {
+  .profile__name {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 35px;
+    line-height: 41px;
+  }
 }
 
 @media screen and (max-width: 320px) {
@@ -16,6 +23,5 @@
     font-size: 27px;
     line-height: 33px;
     justify-self: center;
-    /* padding-left: 28px; */
   }
 }

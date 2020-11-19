@@ -7,6 +7,15 @@
   padding: 0;
 }
 
+@media screen and (max-width: 655px) {
+  .profile__person-do {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .profile__person-do {
     font-style: normal;
@@ -14,6 +23,5 @@
     font-size: 14px;
     line-height: 17px;
     justify-self: center;
-    /* padding-left: 28px; */
   }
 }
