@@ -13,3 +13,13 @@
 @import url("../blocks/profile/__person-do/profile__person-do.css");
 @import url("../blocks/profile/__edit-button/profile__edit-button.css");
 @import url("../blocks/profile/__add-button/profile__add-button.css");
+/* Блок Elements */
+@import url("../blocks/elements/elements.css");
+@import url("../blocks/elements/__img/elements__img.css");
+@import url("../blocks/elements/__description/elements__description.css");
+@import url("../blocks/elements/__item/elements__item.css");
+@import url("../blocks/elements/__heading/elements__heading.css");
+@import url("../blocks/elements/__heart/elements__heart.css");
+/* Блок Footer */
+@import url("../blocks/footer/footer.css");
+@import url("../blocks/footer/__copyright/footer__copyright.css");
