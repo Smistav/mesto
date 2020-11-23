@@ -1,4 +1,5 @@
 .elements__heading {
+  max-width: calc(246px - 22px);
   margin: 0;
   padding: 0;
   font-style: normal;

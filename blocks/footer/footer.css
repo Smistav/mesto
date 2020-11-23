@@ -3,7 +3,6 @@
   margin: 67px auto 0;
   padding-bottom: 60px;
   display: flex;
-  /* justify-content: center; */
 }
 
 @media screen and (max-width: 879px) {
@@ -20,8 +19,6 @@
 
 @media screen and (max-width: 320px) {
   .footer {
-    max-width: 282px;
-    justify-content: center;
     margin-top: 48px;
     padding-bottom: 36px;
   }

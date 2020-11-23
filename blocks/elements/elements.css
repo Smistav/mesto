@@ -18,8 +18,8 @@
 
 @media screen and (max-width: 580px) {
   .elements {
+    margin: 36px auto 0;
     grid-template-columns: max-content;
     grid-template-rows: repeat(min-content, 6);
-    justify-content: center;
   }
 }

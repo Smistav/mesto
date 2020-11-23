@@ -13,8 +13,6 @@
 
 @media screen and (max-width: 655px) {
   .profile__name {
-    font-style: normal;
-    font-weight: 500;
     font-size: 35px;
     line-height: 41px;
   }
@@ -22,8 +20,6 @@
 
 @media screen and (max-width: 320px) {
   .profile__name {
-    font-style: normal;
-    font-weight: 500;
     font-size: 27px;
     line-height: 33px;
     justify-self: center;
