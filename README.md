@@ -1,5 +1,5 @@
 # Проект 4: Место
-https://smistav.github.io/russian-travel/
+https://smistav.github.io/mesto/
 В проекте осуществлено галерея интересных мест России показанная пользователем.
 ## Профайл
 
