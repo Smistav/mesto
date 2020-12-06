@@ -1,11 +1,11 @@
 const InitialCards = [
   {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    name: 'Карачаевск',
+    link: 'images/karachaevsk.jpg'
   },
   {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    name: 'Эльбрус',
+    link: 'images/elbrus.jpg'
   },
   {
     name: 'Иваново',
