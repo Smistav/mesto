@@ -23,6 +23,7 @@
       <button type="button" class="profile__add-button"></button>
     </section>
     <section class="elements">
+      <!--
       <figure class="elements__item">
         <img src="images/karachaevsk.jpg" class="elements__img" alt="Карачаевск">
         <figcaption class="elements__description">
@@ -30,6 +31,7 @@
           <button type="button" class="elements__heart-button"></button>
         </figcaption>
       </figure>
+      
       <figure class="elements__item">
         <img src="images/elbrus.jpg" class="elements__img" alt="Гора Эльбрус">
         <figcaption class="elements__description">
@@ -64,12 +66,13 @@
           <h3 class="elements__heading">Карачаево-Черкессия</h3>
           <button type="button" class="elements__heart-button"></button>
         </figcaption>
-      </figure>
+      </figure> -->
     </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">&commat; 2020 Mesto Russia</p>
   </footer>
+  <!-- window Popup  -->
   <div class="popup">
     <form name="form-edit-profile" class="popup__container">
       <button type="button" class="popup__close"></button>
@@ -79,7 +82,21 @@
       <button type="submit" name="button" class="popup__button">Сохранить</button>
     </form>
   </div>
+  <!-- end Popup  -->
+  <!-- card template  -->
+  <template id="elem">
+    <figure class="elements__item">
+      <img class="elements__img">
+      <figcaption class="elements__description">
+        <h3 class="elements__heading"></h3>
+        <button type="button" class="elements__heart-button"></button>
+      </figcaption>
+    </figure>
+  </template>
+  <!-- end template  -->
   <script src="js/script.js"></script>
+
+
 </body>
 
 </html>
