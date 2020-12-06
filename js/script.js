@@ -27,12 +27,16 @@ const InitialCards = [
 const HandleEditButton = document.querySelector('.profile__edit-button');
 const Popup = document.querySelector('.popup');
 const HandlePopupClose = document.querySelector('.popup__close');
-let InputPopupName = document.querySelector('.popup__input[name="name"');
-let InputPopupJob = document.querySelector('.popup__input[name="job-do"]');
+let InputPopupNameF = document.querySelector('.popup__input[name="namefirst"');
+let InputPopupNameS = document.querySelector('.popup__input[name="namesecond"]');
 let ProfileName = document.querySelector('.profile__name');
+let HeaderPopup = document.querySelector('.popup__heading');
+let PopupButton = document.querySelector('.popup__button');
 let ProfilePersonDo = document.querySelector('.profile__person-do');
-let FormElement = document.querySelector('.popup__container');
-
+const FormElement = document.querySelector('.popup__container');
+const HandleAddCardButton = document.querySelector('.profile__add-button');
+const HeaderNewCardPopup = 'Новое место';
+const HeaderEditPopup = 'Редактировать профиль';
 const CardTemplate = document.querySelector('#elem').content;
 const ElementsOnlineItem = document.querySelector('.elements');
 
@@ -42,7 +46,7 @@ function AddItem(item) {
 
   ElementsItem.querySelector('.elements__img').src = item.link;
   ElementsItem.querySelector('.elements__heading').textContent = item.name;
-  ElementsOnlineItem.append(ElementsItem);
+  ElementsOnlineItem.prepend(ElementsItem);
 }
 
 // Вывод дефолтного массива
@@ -50,9 +54,19 @@ InitialCards.forEach(item => AddItem(item));
 
 
 
-function ShowPopup() {
-  InputPopupName.value = ProfileName.textContent;
-  InputPopupJob.value = ProfilePersonDo.textContent;
+function ShowEditPopup() {
+  HeaderPopup.textContent = HeaderEditPopup;
+  InputPopupNameF.value = ProfileName.textContent;
+  InputPopupNameS.value = ProfilePersonDo.textContent;
+  Popup.classList.add('popup_opened');
+}
+
+function ShowAddCardPopup() {
+  InputPopupNameF.value = '';
+  InputPopupNameS.value = '';
+  InputPopupNameF.placeholder = 'Название';
+  InputPopupNameS.placeholder = 'Ссылка на картинку';
+  HeaderPopup.textContent = HeaderNewCardPopup;
   Popup.classList.add('popup_opened');
 }
 
@@ -60,12 +74,24 @@ function ClosePopup() {
   Popup.classList.remove('popup_opened');
 }
 
-function FormSubmitHandler(evt) {
+function SubmitFormHandler(evt) {
   evt.preventDefault();
-  ProfileName.textContent = InputPopupName.value;
-  ProfilePersonDo.textContent = InputPopupJob.value;
+  let NewCard = [{ name: '', link: '' }];
+
+  if (HeaderPopup.textContent === HeaderEditPopup) {
+    ProfileName.textContent = InputPopupNameF.value;
+    ProfilePersonDo.textContent = InputPopupNameS.value;
+  }
+  if (HeaderPopup.textContent === HeaderNewCardPopup) {
+    if (InputPopupNameF.value !== '' && InputPopupNameS.value !== '') {
+      NewCard.name = InputPopupNameF.value;
+      NewCard.link = InputPopupNameS.value;
+      AddItem(NewCard);
+    }
+  }
   ClosePopup();
 }
-HandleEditButton.addEventListener('click', ShowPopup);
+HandleEditButton.addEventListener('click', ShowEditPopup);
 HandlePopupClose.addEventListener('click', ClosePopup);
-FormElement.addEventListener('submit', FormSubmitHandler);
+HandleAddCardButton.addEventListener('click', ShowAddCardPopup);
+FormElement.addEventListener('submit', SubmitFormHandler);
