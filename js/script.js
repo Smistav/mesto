@@ -1,4 +1,4 @@
-const InitialCards = [
+const initialCards = [
   {
     name: 'Карачаевск',
     link: 'images/karachaevsk.jpg'
@@ -24,74 +24,74 @@ const InitialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-const HandleEditButton = document.querySelector('.profile__edit-button');
-const Popup = document.querySelector('.popup');
-const HandlePopupClose = document.querySelector('.popup__close');
-let InputPopupNameF = document.querySelector('.popup__input[name="namefirst"');
-let InputPopupNameS = document.querySelector('.popup__input[name="namesecond"]');
-let ProfileName = document.querySelector('.profile__name');
-let HeaderPopup = document.querySelector('.popup__heading');
-let PopupButton = document.querySelector('.popup__button');
-let ProfilePersonDo = document.querySelector('.profile__person-do');
-const FormElement = document.querySelector('.popup__container');
-const HandleAddCardButton = document.querySelector('.profile__add-button');
-const HeaderNewCardPopup = 'Новое место';
-const HeaderEditPopup = 'Редактировать профиль';
-const CardTemplate = document.querySelector('#elem').content;
-const ElementsOnlineItem = document.querySelector('.elements');
+const handleEditButton = document.querySelector('.profile__edit-button');
+const popup = document.querySelector('.popup');
+const handlePopupClose = document.querySelector('.popup__close');
+let inputPopupNameF = document.querySelector('.popup__input[name="namefirst"');
+let inputPopupNameS = document.querySelector('.popup__input[name="namesecond"]');
+let profileName = document.querySelector('.profile__name');
+let headerPopup = document.querySelector('.popup__heading');
+let popupButton = document.querySelector('.popup__button');
+let profilePersonDo = document.querySelector('.profile__person-do');
+const formElement = document.querySelector('.popup__container');
+const handleAddCardButton = document.querySelector('.profile__add-button');
+const headerNewCardPopup = 'Новое место';
+const headerEditPopup = 'Редактировать профиль';
+const cardTemplate = document.querySelector('#elem').content;
+const elementsOnlineItem = document.querySelector('.elements');
 
 // функция добавления карточки
-function AddItem(item) {
-  const ElementsItem = CardTemplate.cloneNode(true);
+function addItem(item) {
+  const elementsItem = cardTemplate.cloneNode(true);
 
-  ElementsItem.querySelector('.elements__img').src = item.link;
-  ElementsItem.querySelector('.elements__heading').textContent = item.name;
-  ElementsOnlineItem.prepend(ElementsItem);
+  elementsItem.querySelector('.elements__img').src = item.link;
+  elementsItem.querySelector('.elements__heading').textContent = item.name;
+  elementsItem.querySelector('.elements__img').alt = item.name;
+  elementsOnlineItem.prepend(elementsItem);
 }
 
 // Вывод дефолтного массива
-InitialCards.forEach(item => AddItem(item));
+initialCards.forEach(item => addItem(item));
 
 
-
-function ShowEditPopup() {
-  HeaderPopup.textContent = HeaderEditPopup;
-  InputPopupNameF.value = ProfileName.textContent;
-  InputPopupNameS.value = ProfilePersonDo.textContent;
-  Popup.classList.add('popup_opened');
+function showEditPopup() {
+  headerPopup.textContent = headerEditPopup;
+  inputPopupNameF.value = profileName.textContent;
+  inputPopupNameS.value = profilePersonDo.textContent;
+  popup.classList.add('popup_opened');
 }
 
-function ShowAddCardPopup() {
-  InputPopupNameF.value = '';
-  InputPopupNameS.value = '';
-  InputPopupNameF.placeholder = 'Название';
-  InputPopupNameS.placeholder = 'Ссылка на картинку';
-  HeaderPopup.textContent = HeaderNewCardPopup;
-  Popup.classList.add('popup_opened');
+function showAddCardPopup() {
+  inputPopupNameF.value = '';
+  inputPopupNameS.value = '';
+  inputPopupNameF.placeholder = 'Название';
+  inputPopupNameS.placeholder = 'Ссылка на картинку';
+  headerPopup.textContent = headerNewCardPopup;
+  popup.classList.add('popup_opened');
 }
 
-function ClosePopup() {
-  Popup.classList.remove('popup_opened');
+function closePopup() {
+  popup.classList.remove('popup_opened');
 }
 
-function SubmitFormHandler(evt) {
+function submitFormHandler(evt) {
   evt.preventDefault();
-  let NewCard = [{ name: '', link: '' }];
+  let newCard = [{ name: '', link: '' }];
 
-  if (HeaderPopup.textContent === HeaderEditPopup) {
-    ProfileName.textContent = InputPopupNameF.value;
-    ProfilePersonDo.textContent = InputPopupNameS.value;
+  if (headerPopup.textContent === headerEditPopup) {
+    profileName.textContent = inputPopupNameF.value;
+    profilePersonDo.textContent = inputPopupNameS.value;
   }
-  if (HeaderPopup.textContent === HeaderNewCardPopup) {
-    if (InputPopupNameF.value !== '' && InputPopupNameS.value !== '') {
-      NewCard.name = InputPopupNameF.value;
-      NewCard.link = InputPopupNameS.value;
-      AddItem(NewCard);
+  if (headerPopup.textContent === headerNewCardPopup) {
+    if (inputPopupNameF.value !== '' && inputPopupNameS.value !== '') {
+      newCard.name = inputPopupNameF.value;
+      newCard.link = inputPopupNameS.value;
+      addItem(newCard);
     }
   }
-  ClosePopup();
+  closePopup();
 }
-HandleEditButton.addEventListener('click', ShowEditPopup);
-HandlePopupClose.addEventListener('click', ClosePopup);
-HandleAddCardButton.addEventListener('click', ShowAddCardPopup);
-FormElement.addEventListener('submit', SubmitFormHandler);
+handleEditButton.addEventListener('click', showEditPopup);
+handlePopupClose.addEventListener('click', closePopup);
+handleAddCardButton.addEventListener('click', showAddCardPopup);
+formElement.addEventListener('submit', submitFormHandler);
