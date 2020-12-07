@@ -41,7 +41,7 @@ const cardTemplate = document.querySelector('#elem').content;
 const elementsOnlineItem = document.querySelector('.elements');
 
 
-// функция добавления карточки
+// функция добавления карточки и вешаем слушатель лайков на вновь прибывших
 function addItem(item) {
   const elementsItem = cardTemplate.cloneNode(true);
   const handleElementHeart = elementsItem.querySelector('.elements__heart-button');
