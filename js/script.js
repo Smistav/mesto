@@ -101,7 +101,11 @@ function closePopupAdd() {
   popupAdd.classList.remove('popup-add_opened');
 }
 
-function showPopupImg() {
+function showPopupImg(event) {
+  let targetItem = event.target;
+  targetItem = targetItem.closest('.elements__img');
+
+  //console.log(targetItem.src);
   popupImg.classList.add('popup-img_opened');
 }
 
