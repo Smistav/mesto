@@ -27,12 +27,12 @@ const initialCards = [
 const handleEditButton = document.querySelector('.profile__edit-button');
 const popup = document.querySelector('.popup');
 const handlePopupClose = document.querySelector('.popup__close');
-let inputPopupNameF = document.querySelector('.popup__input[name="namefirst"');
-let inputPopupNameS = document.querySelector('.popup__input[name="namesecond"]');
+let inputPopupName = document.querySelector('.popup__input[name="name"');
+let inputPopupJob = document.querySelector('.popup__input[name="job"]');
 let profileName = document.querySelector('.profile__name');
 let headerPopup = document.querySelector('.popup__heading');
 let profilePersonDo = document.querySelector('.profile__person-do');
-const formElement = document.querySelector('.popup__container');
+let formElement = document.querySelector('.popup__container');
 const handleAddCardButton = document.querySelector('.profile__add-button');
 const headerNewCardPopup = 'Новое место';
 const headerEditPopup = 'Редактировать профиль';
@@ -63,18 +63,19 @@ function addRemoveLike(event) {
 
 function showEditPopup() {
   headerPopup.textContent = headerEditPopup;
-  inputPopupNameF.value = profileName.textContent;
-  inputPopupNameS.value = profilePersonDo.textContent;
+  inputPopupName.value = profileName.textContent;
+  inputPopupJob.value = profilePersonDo.textContent;
   popup.classList.add('popup_opened');
 }
 
 function showAddCardPopup() {
-  inputPopupNameF.value = '';
-  inputPopupNameS.value = '';
-  inputPopupNameF.placeholder = 'Название';
-  inputPopupNameS.placeholder = 'Ссылка на картинку';
+  inputPopupName.value = '';
+  inputPopupJob.value = '';
+  inputPopupName.placeholder = 'Название';
+  inputPopupJob.placeholder = 'Ссылка на картинку';
   headerPopup.textContent = headerNewCardPopup;
   popup.classList.add('popup_opened');
+  formElement.classList.add('.popup__container_add')
 }
 
 function closePopup() {
@@ -82,15 +83,15 @@ function closePopup() {
 }
 
 function addEdit() {
-  profileName.textContent = inputPopupNameF.value;
-  profilePersonDo.textContent = inputPopupNameS.value;
+  profileName.textContent = inputPopupName.value;
+  profilePersonDo.textContent = inputPopupJob.value;
 }
 function addNewItem() {
   let newCard = [{ name: '', link: '' }];
 
-  if (inputPopupNameF.value !== '' && inputPopupNameS.value !== '') {
-    newCard.name = inputPopupNameF.value;
-    newCard.link = inputPopupNameS.value;
+  if (inputPopupName.value !== '' && inputPopupName.value !== '') {
+    newCard.name = inputPopupName.value;
+    newCard.link = inputPopupJob.value;
     addItem(newCard);
   }
 }
