@@ -1,4 +1,4 @@
-.popup__heading {
+.popup-edit__heading {
   color: #000;
   font-style: normal;
   font-weight: 900;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (max-width: 510px) {
-  .popup__heading {
+  .popup-edit__heading {
     max-width: 238px;
     font-size: 18px;
     line-height: 22px;

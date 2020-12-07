@@ -29,13 +29,33 @@
     <p class="footer__copyright">&commat; 2020 Mesto Russia</p>
   </footer>
   <!-- window PopupEdit  -->
-  <div class="popup">
-    <form name="form" class="popup__container">
-      <button type="button" class="popup__close"></button>
-      <h4 class="popup__heading"></h4>
-      <input name="name" class="popup__input" type="text">
-      <input name="job" class="popup__input" type="text">
-      <button type="submit" name="button" class="popup__button">Сохранить</button>
+  <div class="popup-edit">
+    <form name="form" class="popup-edit__container">
+      <button type="button" class="popup-edit__close"></button>
+      <h4 class="popup-edit__heading">Редактировать профиль</h4>
+      <input name="name" class="popup-edit__input" type="text">
+      <input name="job" class="popup-edit__input" type="text">
+      <button type="submit" name="button" class="popup-edit__button">Сохранить</button>
+    </form>
+  </div>
+  <!-- end Popup  -->
+  <!-- window PopupAddItem  -->
+  <div class="popup-add">
+    <form name="form" class="popup-add__container">
+      <button type="button" class="popup-add__close"></button>
+      <h4 class="popup-add__heading">Новое место</h4>
+      <input name="place" class="popup-add__input" type="text" placeholder="название">
+      <input name="link" class="popup-add__input" type="text" placeholder="ссылка на картинку">
+      <button type="submit" name="button" class="popup-add__button">Сохранить</button>
+    </form>
+  </div>
+  <!-- end Popup  -->
+  <!-- window PopupBigImg  -->
+  <div class="popup-img">
+    <form name="form" class="popup-img__container">
+      <button type="button" class="popup-img__close"></button>
+      <img class="popup-img__img">
+      <h4 class="popup-img__heading"></h4>
     </form>
   </div>
   <!-- end Popup  -->
@@ -53,8 +73,6 @@
   </template>
   <!-- end template  -->
   <script src="js/script.js"></script>
-
-
 </body>
 
 </html>

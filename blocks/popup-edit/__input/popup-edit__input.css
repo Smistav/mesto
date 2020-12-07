@@ -1,4 +1,4 @@
-.popup__input {
+.popup-edit__input {
   max-width: 358px;
   margin-bottom: 30px;
   border: none;
@@ -12,7 +12,7 @@
 }
 
 @media screen and (max-width: 429px) {
-  .popup__input {
+  .popup-edit__input {
     max-width: 238px;
   }
 }
