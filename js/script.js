@@ -26,7 +26,7 @@ const initialCards = [
 ];
 const handleEditButton = document.querySelector('.profile__edit-button');
 const popup = document.querySelector('.popup');
-const handlePopupClose = document.querySelector('.popup__close');
+let handlePopupClose = document.querySelector('.popup__close');
 let inputPopupName = document.querySelector('.popup__input[name="name"');
 let inputPopupJob = document.querySelector('.popup__input[name="job"]');
 let profileName = document.querySelector('.profile__name');
@@ -45,15 +45,23 @@ const elementsOnlineItem = document.querySelector('.elements');
 function addItem(item) {
   const elementsItem = cardTemplate.cloneNode(true);
   const handleElementHeart = elementsItem.querySelector('.elements__heart-button');
+  const handleElementTrash = elementsItem.querySelector('.elements__trash-button');
   elementsItem.querySelector('.elements__img').src = item.link;
   elementsItem.querySelector('.elements__heading').textContent = item.name;
   elementsItem.querySelector('.elements__img').alt = item.name;
   elementsOnlineItem.prepend(elementsItem);
   handleElementHeart.addEventListener('click', addRemoveLike);
+  handleElementTrash.addEventListener('click', removeElement);
 }
 
 // Вывод дефолтного массива
 initialCards.forEach(item => addItem(item));
+
+function removeElement(event) {
+  let targetItem = event.target;
+  targetItem = targetItem.closest('.elements__item')
+  targetItem.remove();
+};
 
 function addRemoveLike(event) {
   let targetItem = event.target;
@@ -75,11 +83,27 @@ function showAddCardPopup() {
   inputPopupJob.placeholder = 'Ссылка на картинку';
   headerPopup.textContent = headerNewCardPopup;
   popup.classList.add('popup_opened');
-  formElement.classList.add('.popup__container_add')
+  AddRemoveClassAddPopup('add');
+
 }
 
+function AddRemoveClassAddPopup(key) {
+  if (key === 'add') {
+    formElement.classList.add('popup__container_add_width');
+    headerPopup.classList.add('popup__heading_add_margin');
+    handlePopupClose.classList.add('popup__close_add_position');
+    inputPopupJob.classList.add('popup__input_add_margin');
+  }
+  if (key === 'remove') {
+    formElement.classList.remove('popup__container_add_width');
+    headerPopup.classList.remove('popup__heading_add_margin');
+    handlePopupClose.classList.remove('popup__close_add_position');
+    inputPopupJob.classList.remove('popup__input_add_margin');
+  }
+}
 function closePopup() {
   popup.classList.remove('popup_opened');
+  AddRemoveClassAddPopup('remove');
 }
 
 function addEdit() {
