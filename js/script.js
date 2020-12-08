@@ -1,11 +1,11 @@
 const initialCards = [
   {
-    name: 'Карачаевск',
-    link: 'images/karachaevsk.jpg'
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
   {
-    name: 'Эльбрус',
-    link: 'images/elbrus.jpg'
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   },
   {
     name: 'Иваново',
@@ -27,6 +27,7 @@ const initialCards = [
 // Profile
 const profileName = document.querySelector('.profile__name');
 const profilePersonDo = document.querySelector('.profile__person-do');
+let newCardboolean = false;
 // Popup Edit
 const handleEditButton = document.querySelector('.profile__edit-button');
 const popupEdit = document.querySelector('.popup-edit');
@@ -61,7 +62,8 @@ function addItem(item) {
   elementsItem.querySelector('.elements__img').src = item.link;
   elementsItem.querySelector('.elements__heading').textContent = item.name;
   elementsItem.querySelector('.elements__img').alt = item.name;
-  elementsOnlineItem.prepend(elementsItem);
+  if (newCardboolean) { elementsOnlineItem.prepend(elementsItem); }
+  else { elementsOnlineItem.append(elementsItem); }
 
   handleElementHeart.addEventListener('click', addRemoveLike);
   handleElementTrash.addEventListener('click', removeElement);
@@ -130,6 +132,7 @@ function submitFormHandlerAdd(evt) {
   if (inputPopupAddPlace.value !== '' && inputPopupAddlink.value !== '') {
     newCard.name = inputPopupAddPlace.value;
     newCard.link = inputPopupAddlink.value;
+    newCardboolean = true;
     addItem(newCard);
   }
   closePopupAdd();
@@ -148,6 +151,5 @@ handleAddButton.addEventListener('click', showPopupAdd);
 handlePopupAddClose.addEventListener('click', closePopupAdd);
 formElementAdd.addEventListener('submit', submitFormHandlerAdd);
 // слушатели PopupImg
-//handleImg.addEventListener('click', showPopupImg);
 handlePopupImgClose.addEventListener('click', closePopupImg);
 formElementImg.addEventListener('submit', submitFormHandlerImg);
