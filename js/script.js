@@ -103,9 +103,13 @@ function closePopupAdd() {
 
 function showPopupImg(event) {
   let targetItem = event.target;
-  targetItem = targetItem.closest('.elements__img');
+  const popupImgclass = document.querySelector('.popup-img__img');
+  const popupImgHeading = document.querySelector('.popup-img__heading');
 
-  //console.log(targetItem.src);
+  targetItem = targetItem.closest('.elements__img');
+  popupImgclass.src = targetItem.src;
+  popupImgclass.alt = targetItem.alt;
+  popupImgHeading.textContent = targetItem.alt;
   popupImg.classList.add('popup-img_opened');
 }
 

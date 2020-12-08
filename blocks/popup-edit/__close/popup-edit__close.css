@@ -10,6 +10,7 @@
   right: -40px;
   top: -40px;
   cursor: pointer;
+  background-color: transparent;
 }
 
 .popup-edit__close:hover {

@@ -1,7 +1,4 @@
 .popup-img__container {
-  width: 100%;
-  max-width: 75vw;
-  max-height: 75vh;
   background-color: #fff;
   position: fixed;
   left: 50%;
@@ -10,8 +7,7 @@
 }
 
 @media screen and (max-width: 510px) {
-  .popup-img__container {
-    max-width: 282px;
-    padding: 25px 22px 0 22px;
+  .popup-add__container {
+    max-width: 240px;
   }
 }

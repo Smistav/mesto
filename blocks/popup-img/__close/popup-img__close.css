@@ -10,14 +10,9 @@
   right: -40px;
   top: -40px;
   cursor: pointer;
+  background-color: transparent;
 }
 
 .popup-img__close:hover {
   opacity: 0.6;
-}
-
-@media screen and (max-width: 429px) {
-  .popup-img__close {
-    right: 0;
-  }
 }

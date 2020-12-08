@@ -10,6 +10,7 @@
   right: -30px;
   top: -30px;
   cursor: pointer;
+  background-color: transparent;
 }
 
 .popup-add__close:hover {
