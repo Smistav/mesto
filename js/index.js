@@ -48,8 +48,8 @@ const formElementAdd = popupAdd.querySelector('.popup__container');
 const popupImg = document.querySelector('.popup_form_img');
 const handlePopupImgClose = popupImg.querySelector('.popup__close');
 const formElementImg = popupImg.querySelector('.popup__container');
-const popupImgclass = document.querySelector('.popup__img');
-const popupImgHeading = document.querySelector('.popup__heading');
+const popupImgclass = popupImg.querySelector('.popup__img');
+const popupImgHeading = popupImg.querySelector('.popup__heading');
 // функция добавления карточки и вешаем слушатель лайков и корзины на вновь прибывших
 function addCard(newCardboolean, item) {
   let card = createCard();
@@ -100,7 +100,6 @@ function showAddPopup() {
 
 function showPopupImg(event) {
   let targetItem = event.target;
-
 
   targetItem = targetItem.closest('.elements__img');
   popupImgclass.src = targetItem.src;
