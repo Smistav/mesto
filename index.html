@@ -29,34 +29,34 @@
     <p class="footer__copyright">&commat; 2020 Mesto Russia</p>
   </footer>
   <!-- window PopupEdit  -->
-  <div class="popup-edit">
-    <form name="form" class="popup-edit__container">
-      <button type="button" class="popup-edit__close"></button>
-      <h4 class="popup-edit__heading">Редактировать профиль</h4>
-      <input name="name" class="popup-edit__input" type="text">
-      <input name="job" class="popup-edit__input" type="text">
-      <button type="submit" name="button" class="popup-edit__button">Сохранить</button>
+  <div class="popup popup_form_edit">
+    <form name="form_edit" class="popup__container">
+      <button type="button" class="popup__close"></button>
+      <h4 class="popup__heading">Редактировать профиль</h4>
+      <input name="name" class="popup__input" type="text">
+      <input name="job" class="popup__input" type="text">
+      <button type="submit" name="button" class="popup__button">Сохранить</button>
     </form>
   </div>
   <!-- end Popup  -->
   <!-- window PopupAddItem  -->
-  <div class="popup-add">
-    <form name="form" class="popup-add__container">
-      <button type="button" class="popup-add__close"></button>
-      <h4 class="popup-add__heading">Новое место</h4>
-      <input name="place" class="popup-add__input" type="text" placeholder="название">
-      <input name="link" class="popup-add__input" type="text" placeholder="ссылка на картинку">
-      <button type="submit" name="button" class="popup-add__button">Сохранить</button>
+  <div class="popup popup_form_add">
+    <form name="form_add" class="popup__container popup__container_form_add">
+      <button type="button" class="popup__close popup__close_form_add"></button>
+      <h4 class="popup__heading popup__heading_form_add">Новое место</h4>
+      <input name="place" class="popup__input popup__input_form_add" type="text" placeholder="название">
+      <input name="link" class="popup__input popup__input_form_add" type="text" placeholder="ссылка на картинку">
+      <button type="submit" name="button" class="popup__button">Сохранить</button>
     </form>
   </div>
   <!-- end Popup  -->
   <!-- window PopupBigImg  -->
-  <div class="popup-img">
-    <form name="form" class="popup-img__container">
-      <button type="button" class="popup-img__close"></button>
-      <img class="popup-img__img" src="#" alt="#">
-      <h4 class="popup-img__heading"></h4>
-    </form>
+  <div class="popup popup_form_img">
+    <div class="popup__container popup__container_form_img">
+      <button type="button" class="popup__close popup__close_form_img"></button>
+      <img class="popup__img" src="#" alt="#">
+      <h4 class="popup__heading_form_img"></h4>
+    </div>
   </div>
   <!-- end Popup  -->
 
@@ -72,7 +72,8 @@
     </figure>
   </template>
   <!-- end template  -->
-  <script src="js/script.js"></script>
+
+  <script src="js/index.js"></script>
 </body>
 
 </html>
