@@ -26,8 +26,8 @@ const popupImgclass = popupImg.querySelector('.popup__img');
 const popupImgHeading = popupImg.querySelector('.popup__heading');
 // функция добавления карточки и вешаем слушатель лайков и корзины на вновь прибывших
 function addCard(newCardboolean, item) {
-  let card = createCard();
-  let elementImg = card.querySelector('.elements__img');
+  const card = createCard();
+  const elementImg = card.querySelector('.elements__img');
   elementImg.src = item.link;
   card.querySelector('.elements__heading').textContent = item.name;
   elementImg.alt = item.name;
@@ -91,7 +91,7 @@ function submitFormHandlerEdit(evt) {
 
 function submitFormHandlerAdd(evt) {
   evt.preventDefault();
-  let newCard = [{ name: '', link: '' }];
+  const newCard = [{ name: '', link: '' }];
 
   if (inputPopupAddPlace.value !== '' && inputPopupAddlink.value !== '') {
     newCard.name = inputPopupAddPlace.value;
