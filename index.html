@@ -35,21 +35,25 @@
       <h4 class="popup__heading">Редактировать профиль</h4>
       <input id="name-input" name="name" placeholder="Имя" class="popup__input" type="text" minlength="2" maxlength="40"
         required>
-      <span id="name-input-error" class="popup__input-error"></span>
+      <span id="name-input-error" class="popup__error"></span>
       <input id="job-input" name="job" placeholder="О себе" class="popup__input" type="text" minlength="2"
         maxlength="200" required>
-      <span id="job-input-error" class="popup__input-error"></span>
+      <span id="job-input-error" class="popup__error"></span>
       <button type="submit" name="button" class="popup__button">Сохранить</button>
     </form>
   </div>
   <!-- end Popup  -->
   <!-- window PopupAddItem  -->
   <div class="popup popup_form_add">
-    <form name="form_add" class="popup__container popup__container_form_add">
+    <form name="form_add" class="popup__container popup__container_form_add" novalidate>
       <button type="button" class="popup__close popup__close_form_add"></button>
       <h4 class="popup__heading popup__heading_form_add">Новое место</h4>
-      <input name="place" class="popup__input popup__input_form_add" type="text" placeholder="название">
-      <input name="link" class="popup__input popup__input_form_add" type="text" placeholder="ссылка на картинку">
+      <input id="place-input" name="place" class="popup__input popup__input_form_add" type="text"
+        placeholder="название">
+      <span id="place-input-error" class="popup__error"></span>
+      <input id="link-input" name="link" class="popup__input popup__input_form_add" type="text"
+        placeholder="ссылка на картинку">
+      <span id="link-input-error" class="popup__error"></span>
       <button type="submit" name="button" class="popup__button">Сохранить</button>
     </form>
   </div>
@@ -76,6 +80,7 @@
     </figure>
   </template>
   <!-- end template  -->
+  <script src="js/validate.js"></script>
   <script src="js/initial-cards.js"></script>
   <script src="js/index.js"></script>
 </body>
