@@ -24,6 +24,8 @@ const handlePopupImgClose = popupImg.querySelector('.popup__close');
 const formElementImg = popupImg.querySelector('.popup__container');
 const popupImgclass = popupImg.querySelector('.popup__img');
 const popupImgHeading = popupImg.querySelector('.popup__heading');
+
+//-----------
 // функция добавления карточки и вешаем слушатель лайков и корзины на вновь прибывших
 function addCard(newCardboolean, item) {
   const card = createCard();
@@ -114,6 +116,32 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
+const showInputError = (formElement, inputElement, errorMessage) => {
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+  inputElement.classList.add('popup__input_type_error');
+  // Заменим содержимое span с ошибкой на переданный параметр
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add('popup__input-error_active');
+};
+
+const hideInputError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+  inputElement.classList.remove('popup__input_type_error');
+  errorElement.classList.remove('popup__input-error_active');
+  // Очистим ошибку
+  errorElement.textContent = '';
+};
+
+// Функция, которая проверяет валидность поля
+const isValid = (formElement, inputElement) => {
+  if (!inputElement.validity.valid) {
+    // Передадим сообщение об ошибке вторым аргументом
+    showInputError(formElement, inputElement, inputElement.validationMessage);
+  } else {
+    hideInputError(formElement, inputElement);
+  }
+};
+
 // слушатели PopupEdit
 handleEditButton.addEventListener('click', showEditPopup);
 handlePopupEditClose.addEventListener('click', () => { closePopup(popupEdit) });
@@ -125,3 +153,7 @@ formElementAdd.addEventListener('submit', submitFormHandlerAdd);
 // слушатели PopupImg
 handlePopupImgClose.addEventListener('click', () => { closePopup(popupImg) });
 formElementImg.addEventListener('submit', submitFormHandlerImg);
+//слушатели Valid form
+// Вызовем функцию isValid на каждый ввод символа
+inputPopupEditName.addEventListener('input', () => isValid(formElementEdit, inputPopupEditName));
+inputPopupEditJob.addEventListener('input', () => isValid(formElementEdit, inputPopupEditJob));
