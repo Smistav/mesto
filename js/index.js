@@ -88,20 +88,27 @@ function showPopupImg(event) {
 }
 
 function submitFormHandlerEdit(evt) {
+  const button = popupEdit.querySelector('.popup__button');
+
   evt.preventDefault();
   profileName.textContent = inputPopupEditName.value;
   profilePersonDo.textContent = inputPopupEditJob.value;
   closePopup(popupEdit);
+  button.classList.add('popup__button_disabled');
+  button.disabled = true;
 }
 
 function submitFormHandlerAdd(evt) {
   const newCard = [{ name: '', link: '' }];
+  const button = popupAdd.querySelector('.popup__button');
 
   evt.preventDefault();
   newCard.name = inputPopupAddPlace.value;
   newCard.link = inputPopupAddlink.value;
   addCard(true, newCard);
   closePopup(popupAdd);
+  button.classList.add('popup__button_disabled');
+  button.disabled = true;
 }
 
 function submitFormHandlerImg(evt) {
