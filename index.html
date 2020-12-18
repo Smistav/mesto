@@ -48,11 +48,11 @@
     <form name="form_add" class="popup__container popup__container_form_add" novalidate>
       <button type="button" class="popup__close popup__close_form_add"></button>
       <h4 class="popup__heading popup__heading_form_add">Новое место</h4>
-      <input id="place-input" name="place" class="popup__input popup__input_form_add" type="text"
-        placeholder="название">
+      <input id="place-input" name="place" class="popup__input popup__input_form_add" type="text" minlength="2"
+        maxlength="30" placeholder="название" required>
       <span id="place-input-error" class="popup__error"></span>
-      <input id="link-input" name="link" class="popup__input popup__input_form_add" type="text"
-        placeholder="ссылка на картинку">
+      <input id="link-input" name="link" class="popup__input popup__input_form_add" type="url"
+        placeholder="ссылка на картинку" required>
       <span id="link-input-error" class="popup__error"></span>
       <button type="submit" name="button" class="popup__button">Сохранить</button>
     </form>
