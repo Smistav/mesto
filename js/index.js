@@ -1,3 +1,7 @@
+//
+const body = document.querySelector('.page');
+// Key close
+const keyClose = 'Escape';
 // Profile
 const profileName = document.querySelector('.profile__name');
 const profilePersonDo = document.querySelector('.profile__person-do');
@@ -110,19 +114,27 @@ function submitFormHandlerImg(evt) {
   closePopup(popupImg);
 }
 
+function closeKeyPopup(evt, popup) {
+  if (evt.key === keyClose) closePopup(popup);
+}
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  body.addEventListener('keydown', evt => closeKeyPopup(evt, popup));
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  body.removeEventListener('keydown', evt => closeKeyPopup(evt, popup));
 }
 
-function setListenersOverlay(allpopup) {
-  arrPopup = Array.from(allpopup);
+function setListenersCloseOnOverlay(allPopup) {
+  const arrPopup = Array.from(allPopup);
   arrPopup.forEach((popup) => {
     popup.addEventListener('click', (evt) => {
-      if (evt.target === popup) closePopup(evt.target);
+      if (evt.target === popup) {
+        closePopup(evt.target);
+      }
     });
   });
 }
@@ -139,4 +151,4 @@ formElementAdd.addEventListener('submit', submitFormHandlerAdd);
 handlePopupImgClose.addEventListener('click', () => { closePopup(popupImg) });
 formElementImg.addEventListener('submit', submitFormHandlerImg);
 // слушатель на Overlay всех popup
-setListenersOverlay(allOverlayPopup);
+setListenersCloseOnOverlay(allOverlayPopup);
