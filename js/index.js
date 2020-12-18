@@ -1,6 +1,8 @@
 // Profile
 const profileName = document.querySelector('.profile__name');
 const profilePersonDo = document.querySelector('.profile__person-do');
+// Overlay
+const allOverlayPopup = document.querySelectorAll('.popup');
 // elements
 const cardTemplate = document.querySelector('#elem').content;
 const elementsOnlineItem = document.querySelector('.elements');
@@ -116,6 +118,15 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
+function setListenersOverlay(allpopup) {
+  arrPopup = Array.from(allpopup);
+  arrPopup.forEach((popup) => {
+    popup.addEventListener('click', (evt) => {
+      if (evt.target === popup) closePopup(evt.target);
+    });
+  });
+}
+
 // слушатели PopupEdit
 handleEditButton.addEventListener('click', showEditPopup);
 handlePopupEditClose.addEventListener('click', () => { closePopup(popupEdit) });
@@ -127,3 +138,5 @@ formElementAdd.addEventListener('submit', submitFormHandlerAdd);
 // слушатели PopupImg
 handlePopupImgClose.addEventListener('click', () => { closePopup(popupImg) });
 formElementImg.addEventListener('submit', submitFormHandlerImg);
+// слушатель на Overlay всех popup
+setListenersOverlay(allOverlayPopup);
