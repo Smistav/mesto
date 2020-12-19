@@ -128,6 +128,14 @@ function closeClickOverlay(evt) {
   if (evt.target === activePopup) closePopup(activePopup);
 }
 
+function clearError(popup) {
+  const visibleError = popup.querySelectorAll('.popup__error');
+  const visibleErrorInput = popup.querySelectorAll('.popup__input');
+
+  visibleError.forEach((elem) => elem.classList.remove('popup__error_visible'));
+  visibleErrorInput.forEach((elem) => elem.classList.remove('popup__input_type_error'));
+}
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeEscPopup);
@@ -138,6 +146,7 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeEscPopup);
   document.removeEventListener('click', closeClickOverlay);
+  clearError(popup);
 }
 
 // слушатели PopupEdit
