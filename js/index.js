@@ -30,20 +30,22 @@ const popupImgHeading = popupImg.querySelector('.popup__heading');
 //-----------
 // функция добавления карточки и вешаем слушатель лайков и корзины на вновь прибывших
 function addCard(newCardboolean, item) {
-  const card = createCard();
-  const elementImg = card.querySelector('.elements__img');
-  elementImg.src = item.link;
-  card.querySelector('.elements__heading').textContent = item.name;
-  elementImg.alt = item.name;
+  const card = createCard(item);
+
   if (newCardboolean) { elementsOnlineItem.prepend(card); }
   else { elementsOnlineItem.append(card); }
 }
 
-function createCard() {
+function createCard(item) {
   const elementsItem = cardTemplate.cloneNode(true);
   const handleElementHeart = elementsItem.querySelector('.elements__heart-button');
   const handleElementTrash = elementsItem.querySelector('.elements__trash-button');
   const handleElementImg = elementsItem.querySelector('.elements__img');
+  const handleElementHeading = elementsItem.querySelector('.elements__heading');
+
+  handleElementImg.src = item.link;
+  handleElementHeading.textContent = item.name;
+  handleElementImg.alt = item.name;
 
   handleElementHeart.addEventListener('click', addRemoveLike);
   handleElementTrash.addEventListener('click', removeElement);
@@ -88,27 +90,25 @@ function showPopupImg(event) {
 }
 
 function submitFormHandlerEdit(evt) {
-  const button = popupEdit.querySelector('.popup__button');
+  const button = popupEdit.querySelector(defaultValues.submitButtonSelector);
 
   evt.preventDefault();
   profileName.textContent = inputPopupEditName.value;
   profilePersonDo.textContent = inputPopupEditJob.value;
   closePopup(popupEdit);
-  button.classList.add('popup__button_disabled');
-  button.disabled = true;
+  toggleButtonState(false, button, defaultValues);
 }
 
 function submitFormHandlerAdd(evt) {
   const newCard = [{ name: '', link: '' }];
-  const button = popupAdd.querySelector('.popup__button');
+  const button = popupAdd.querySelector(defaultValues.submitButtonSelector);
 
   evt.preventDefault();
   newCard.name = inputPopupAddPlace.value;
   newCard.link = inputPopupAddlink.value;
   addCard(true, newCard);
   closePopup(popupAdd);
-  button.classList.add('popup__button_disabled');
-  button.disabled = true;
+  toggleButtonState(false, button, defaultValues);
 }
 
 function submitFormHandlerImg(evt) {
@@ -129,11 +129,11 @@ function closeClickOverlay(evt) {
 }
 
 function clearError(popup) {
-  const visibleError = popup.querySelectorAll('.popup__error');
-  const visibleErrorInput = popup.querySelectorAll('.popup__input');
+  const visibleError = popup.querySelectorAll('.' + defaultValues.errorClass);
+  const visibleErrorInput = popup.querySelectorAll(defaultValues.inputSelector);
 
-  visibleError.forEach((elem) => elem.classList.remove('popup__error_visible'));
-  visibleErrorInput.forEach((elem) => elem.classList.remove('popup__input_type_error'));
+  visibleError.forEach((elem) => elem.classList.remove(defaultValues.errorClass));
+  visibleErrorInput.forEach((elem) => elem.classList.remove(defaultValues.inputErrorClass));
 }
 
 function openPopup(popup) {
