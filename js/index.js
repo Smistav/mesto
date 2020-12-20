@@ -74,8 +74,7 @@ function showEditPopup() {
 }
 
 function showAddPopup() {
-  inputPopupAddPlace.value = '';
-  inputPopupAddlink.value = '';
+  formElementAdd.reset();
   openPopup(popupAdd);
 }
 
@@ -111,8 +110,7 @@ function submitFormHandlerAdd(evt) {
   toggleButtonState(false, button, defaultValues);
 }
 
-function submitFormHandlerImg(evt) {
-  evt.preventDefault();
+function closePopupImg() {
   closePopup(popupImg);
 }
 
@@ -126,14 +124,6 @@ function closeClickOverlay(evt) {
   const activePopup = document.querySelector('.popup_opened');
 
   if (evt.target === activePopup) closePopup(activePopup);
-}
-
-function clearError(popup) {
-  const visibleError = popup.querySelectorAll('.' + defaultValues.errorClass);
-  const visibleErrorInput = popup.querySelectorAll(defaultValues.inputSelector);
-
-  visibleError.forEach((elem) => elem.classList.remove(defaultValues.errorClass));
-  visibleErrorInput.forEach((elem) => elem.classList.remove(defaultValues.inputErrorClass));
 }
 
 function openPopup(popup) {
@@ -159,4 +149,4 @@ handlePopupAddClose.addEventListener('click', () => { closePopup(popupAdd) });
 formElementAdd.addEventListener('submit', submitFormHandlerAdd);
 // слушатели PopupImg
 handlePopupImgClose.addEventListener('click', () => { closePopup(popupImg) });
-formElementImg.addEventListener('submit', submitFormHandlerImg);
+formElementImg.addEventListener('submit', closePopupImg);

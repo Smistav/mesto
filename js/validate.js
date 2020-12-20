@@ -1,5 +1,5 @@
 const defaultValues = {
-  formSelector: '.popup__container',
+  formSelector: '.popup__container_form_isform',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_disabled',
@@ -22,6 +22,14 @@ const hideInputError = (formElement, inputElement, validConst) => {
   errorElement.classList.remove(validConst.errorClass);
   errorElement.textContent = '';
 };
+
+function clearError(popup) {
+  const visibleError = popup.querySelectorAll('.' + defaultValues.errorClass);
+  const visibleErrorInput = popup.querySelectorAll(defaultValues.inputSelector);
+
+  visibleError.forEach((elem) => elem.classList.remove(defaultValues.errorClass));
+  visibleErrorInput.forEach((elem) => elem.classList.remove(defaultValues.inputErrorClass));
+}
 
 const isValid = (formElement, inputElement, validConst) => {
   if (!inputElement.validity.valid) {
@@ -53,22 +61,12 @@ const setEventListeners = (formElement, validConst) => {
     });
   });
 };
-// Проверка inputForm на то что она именно form так как есть input
-const isForm = (inputForm, validConst) => {
-  const arrElement = Array.from(inputForm);
-  const element = validConst.inputSelector.slice(1);
-  return arrElement.some((elem) => {
-    return elem.classList.contains(element);
-  });
-};
 
 const enableValidation = (validConst) => {
   const formList = Array.from(document.querySelectorAll(validConst.formSelector));
   formList.forEach((inputForm) => {
-    if (isForm(inputForm, validConst)) {
-      inputForm.addEventListener('submit', (evt) => evt.preventDefault());
-      setEventListeners(inputForm, validConst);
-    }
+    inputForm.addEventListener('submit', (evt) => evt.preventDefault());
+    setEventListeners(inputForm, validConst);
   });
 }
 
