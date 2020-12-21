@@ -68,12 +68,14 @@ function addRemoveLike(event) {
 };
 
 function showEditPopup() {
+  clearError(popupEdit);
   inputPopupEditName.value = profileName.textContent;
   inputPopupEditJob.value = profilePersonDo.textContent;
   openPopup(popupEdit);
 }
 
 function showAddPopup() {
+  clearError(popupAdd);
   formElementAdd.reset();
   openPopup(popupAdd);
 }
@@ -136,7 +138,6 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeEscPopup);
   document.removeEventListener('click', closeClickOverlay);
-  clearError(popup);
 }
 
 // слушатели PopupEdit
