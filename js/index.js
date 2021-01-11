@@ -1,4 +1,5 @@
 import { initialCards, Card } from './card.js'
+import { defaultValues, FormValidator } from './FormValidator.js'
 // Key close popup
 const ESCAPE = 'Escape';
 // Profile const
@@ -39,6 +40,8 @@ function addCard(newCard, item) {
 }
 // Вывод дефолтного массива
 initialCards.forEach(item => addCard(false, item));
+const form = new FormValidator(defaultValues, '.popup_form_edit');
+form.enableValidation();
 
 function showEditPopup() {
   inputPopupEditName.value = profileName.textContent;
