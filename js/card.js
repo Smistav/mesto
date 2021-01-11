@@ -42,7 +42,7 @@ class Card {
     return cardElement;
   }
   _handleElementHeart() {
-    this._element.classList.toggle('elements__heart-button_active');
+    this._element.querySelector('.elements__heart-button').classList.toggle('elements__heart-button_active');
   }
   _handleElementTrash() {
     this._element.remove();
