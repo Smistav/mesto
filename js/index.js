@@ -25,48 +25,20 @@ const formElementAdd = popupAdd.querySelector('.popup__container');
 const popupImg = document.querySelector('.popup_form_img');
 const handlePopupImgClose = popupImg.querySelector('.popup__close');
 const formElementImg = popupImg.querySelector('.popup__container');
-//const popupImgclass = popupImg.querySelector('.popup__img');
-//const popupImgHeading = popupImg.querySelector('.popup__heading');
+const popupImgclass = popupImg.querySelector('.popup__img');
+const popupImgHeading = popupImg.querySelector('.popup__heading');
 
 //-----------
 // функция добавления карточки и вешаем слушатель лайков и корзины на вновь прибывших
 function addCard(newCard, item) {
   const card = new Card(item, '#elem');
   const cardElement = card.generateCard();
+  cardElement.querySelector('.elements__img').addEventListener('click', showPopupImg);
   if (newCard) { elementsOnlineItem.prepend(cardElement); }
   else { elementsOnlineItem.append(cardElement); }
 }
-
-// function createCard(item) {
-//   const elementsItem = cardTemplate.cloneNode(true);
-//   const handleElementHeart = elementsItem.querySelector('.elements__heart-button');
-//   const handleElementTrash = elementsItem.querySelector('.elements__trash-button');
-//   const handleElementImg = elementsItem.querySelector('.elements__img');
-//   const handleElementHeading = elementsItem.querySelector('.elements__heading');
-
-//   handleElementImg.src = item.link;
-//   handleElementHeading.textContent = item.name;
-//   handleElementImg.alt = item.name;
-
-//   handleElementHeart.addEventListener('click', addRemoveLike);
-//   handleElementTrash.addEventListener('click', removeElement);
-//   handleElementImg.addEventListener('click', showPopupImg);
-//   return elementsItem;
-// }
 // Вывод дефолтного массива
 initialCards.forEach(item => addCard(false, item));
-
-// function removeElement(event) {
-//   let targetItem = event.target;
-//   targetItem = targetItem.closest('.elements__item')
-//   targetItem.remove();
-// };
-
-// function addRemoveLike(event) {
-//   let targetItem = event.target;
-//   targetItem = targetItem.closest('.elements__heart-button')
-//   targetItem.classList.toggle('elements__heart-button_active');
-// };
 
 function showEditPopup() {
   inputPopupEditName.value = profileName.textContent;

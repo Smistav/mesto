@@ -47,9 +47,6 @@ class Card {
   _handleElementTrash() {
     this._element.remove();
   }
-  _handleElementImg() {
-
-  }
 
   _setEventListeners() {
     this._element.querySelector('.elements__heart-button').addEventListener('click', () => {
@@ -57,9 +54,6 @@ class Card {
     });
     this._element.querySelector('.elements__trash-button').addEventListener('click', () => {
       this._handleElementTrash()
-    });
-    this._element.querySelector('.elements__img').addEventListener('click', () => {
-      _handleElementImg()
     });
   }
 
