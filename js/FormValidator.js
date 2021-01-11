@@ -44,7 +44,7 @@ class FormValidator {
   }
   enableValidation() {
     this._formElement = document.querySelector(this._form);
-    this._inputElement = this._formElement.querySelectorAll(this._input);
+    this._inputElement = this._formElement.querySelector(this._input); // нужен Олл
     this._formElement.addEventListener('submit', (evt) => evt.preventDefault());
     this._setEventListeners();
     return this._formElement
