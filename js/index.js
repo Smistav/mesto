@@ -30,7 +30,7 @@ const popupImgclass = popupImg.querySelector('.popup__img');
 const popupImgHeading = popupImg.querySelector('.popup__heading');
 
 //-----------
-// функция добавления карточки и вешаем слушатель лайков и корзины на вновь прибывших
+// функция добавления карточки и вешаем слушатели лайков и корзины
 function addCard(newCard, item) {
   const card = new Card(item, '#elem');
   const cardElement = card.generateCard();
