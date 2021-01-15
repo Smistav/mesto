@@ -28,7 +28,8 @@ const handlePopupImgClose = popupImg.querySelector('.popup__close');
 const formElementImg = popupImg.querySelector('.popup__container');
 const popupImgclass = popupImg.querySelector('.popup__img');
 const popupImgHeading = popupImg.querySelector('.popup__heading');
-
+const allForm = document.querySelectorAll('.popup');
+let form = null;
 //-----------
 // функция добавления карточки и вешаем слушатели лайков и корзины
 function addCard(newCard, item) {
@@ -38,10 +39,19 @@ function addCard(newCard, item) {
   if (newCard) { elementsOnlineItem.prepend(cardElement); }
   else { elementsOnlineItem.append(cardElement); }
 }
-// Вывод дефолтного массива
+function addFormValidate(defaultValues, elem) {
+  form = new FormValidator(defaultValues, elem);
+  form.enableValidation();
+}
+// Вывод дефолтного массива карточек
 initialCards.forEach(item => addCard(false, item));
-const form = new FormValidator(defaultValues, '.popup_form_edit');
-form.enableValidation();
+// Инициализация валидации всех форм
+allForm.forEach(elem => {
+  if (elem.querySelector(defaultValues.formSelector)) {
+    addFormValidate(defaultValues, elem);
+
+  }
+});
 
 function showEditPopup() {
   inputPopupEditName.value = profileName.textContent;
@@ -71,19 +81,18 @@ function submitFormHandlerEdit(evt) {
   profileName.textContent = inputPopupEditName.value;
   profilePersonDo.textContent = inputPopupEditJob.value;
   closePopup(popupEdit);
-  toggleButtonState(false, button, defaultValues);
+  // form.toggleButtonState();
 }
 
 function submitFormHandlerAdd(evt) {
   const newCard = [{ name: '', link: '' }];
-  const button = popupAdd.querySelector(defaultValues.submitButtonSelector);
 
   evt.preventDefault();
   newCard.name = inputPopupAddPlace.value;
   newCard.link = inputPopupAddlink.value;
   addCard(true, newCard);
   closePopup(popupAdd);
-  toggleButtonState(false, button, defaultValues);
+  // form.toggleButtonState();
 }
 
 function closePopupImg() {
@@ -112,7 +121,7 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeEscPopup);
   document.removeEventListener('click', closeClickOverlay);
-  clearError(popup);
+  //form.clearError();
 }
 
 // слушатели PopupEdit
