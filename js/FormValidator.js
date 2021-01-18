@@ -60,7 +60,7 @@ class FormValidator {
       });
     });
   }
-  clearError() {
+  resetValidation() {
     const visibleError = this._formElement.querySelectorAll('.' + this._error);
 
     visibleError.forEach((elem) => elem.classList.remove(this._error));

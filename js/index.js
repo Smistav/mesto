@@ -49,13 +49,13 @@ formAdd.enableValidation();
 function showEditPopup() {
   inputPopupEditName.value = profileName.textContent;
   inputPopupEditJob.value = profilePersonDo.textContent;
-  formEdit.clearError();
+  formEdit.resetValidation();
   openPopup(popupEdit);
 }
 
 function showAddPopup() {
   formElementAdd.reset();
-  formAdd.clearError();
+  formAdd.resetValidation();
   openPopup(popupAdd);
 }
 
