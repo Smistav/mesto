@@ -47,7 +47,6 @@ const formAdd = new FormValidator(defaultValues, popupAdd);
 formAdd.enableValidation();
 
 function showEditPopup() {
-  clearError(popupEdit);
   inputPopupEditName.value = profileName.textContent;
   inputPopupEditJob.value = profilePersonDo.textContent;
   formEdit.clearError();
@@ -55,7 +54,6 @@ function showEditPopup() {
 }
 
 function showAddPopup() {
-  clearError(popupAdd);
   formElementAdd.reset();
   formAdd.clearError();
   openPopup(popupAdd);
