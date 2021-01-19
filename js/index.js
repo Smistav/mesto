@@ -6,7 +6,6 @@ const ESCAPE = 'Escape';
 const profileName = document.querySelector('.profile__name');
 const profilePersonDo = document.querySelector('.profile__person-do');
 // elements const
-//const cardTemplate = document.querySelector('#elem').content;
 const elementsOnlineItem = document.querySelector('.elements');
 // Popup Edit const
 const handleEditButton = document.querySelector('.profile__edit-button');
@@ -31,15 +30,14 @@ const popupImgHeading = popupImg.querySelector('.popup__heading');
 
 //-----------
 // функция добавления карточки и вешаем слушатели лайков и корзины
-function addCard(newCard, item) {
+function addCard(item) {
   const card = new Card(item, '#elem');
   const cardElement = card.generateCard();
   cardElement.querySelector('.elements__img').addEventListener('click', showPopupImg);
-  if (newCard) { elementsOnlineItem.prepend(cardElement); }
-  else { elementsOnlineItem.append(cardElement); }
+  elementsOnlineItem.prepend(cardElement);
 }
 // Вывод дефолтного массива карточек
-initialCards.forEach(item => addCard(false, item));
+initialCards.reverse().forEach(item => addCard(item));
 // Инициализация валидации форм
 const formEdit = new FormValidator(defaultValues, popupEdit);
 formEdit.enableValidation();
@@ -60,9 +58,8 @@ function showAddPopup() {
 }
 
 function showPopupImg(event) {
-  let targetItem = event.target;
+  const targetItem = event.target.closest('.elements__img');
 
-  targetItem = targetItem.closest('.elements__img');
   popupImgclass.src = targetItem.src;
   popupImgclass.alt = targetItem.alt;
   popupImgHeading.textContent = targetItem.alt;
@@ -79,12 +76,12 @@ function submitFormHandlerEdit(evt) {
 }
 
 function submitFormHandlerAdd(evt) {
-  const newCard = [{ name: '', link: '' }];
-
   evt.preventDefault();
-  newCard.name = inputPopupAddPlace.value;
-  newCard.link = inputPopupAddlink.value;
-  addCard(true, newCard);
+  addCard({
+    name: inputPopupAddPlace.value,
+    link: inputPopupAddlink.value
+  }
+  );
   closePopup(popupAdd);
 }
 
