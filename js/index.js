@@ -6,7 +6,6 @@ const ESCAPE = 'Escape';
 const profileName = document.querySelector('.profile__name');
 const profilePersonDo = document.querySelector('.profile__person-do');
 // elements const
-//const cardTemplate = document.querySelector('#elem').content;
 const elementsOnlineItem = document.querySelector('.elements');
 // Popup Edit const
 const handleEditButton = document.querySelector('.profile__edit-button');
