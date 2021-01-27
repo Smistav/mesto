@@ -1,4 +1,4 @@
-export { initialCards, constValid }
+export { initialCards, constValid, ESCAPE }
 
 const constValid = {
   formSelector: '.popup__container_form_isform',
@@ -34,3 +34,5 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+// Key close popup
+const ESCAPE = 'Escape';

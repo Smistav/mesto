@@ -3,12 +3,14 @@ import Card from '../components/Card.js'
 import FormValidator from '../components/FormValidator.js'
 import Section from '../components/Section.js'
 import Popup from '../components/Popup.js'
-// Key close popup
-const ESCAPE = 'Escape';
+import PopupWithImage from '../components/PopupWithImage.js'
+
 // Section to enter cards
 const cardSection = '.elements';
+// Popup Selectors
 const popupEditSelector = '.popup_form_edit';
 const popupAddSelector = '.popup_form_add';
+const popupImgSelector = '.popup_form_img';
 // Profile const
 const profileName = document.querySelector('.profile__name');
 const profilePersonDo = document.querySelector('.profile__person-do');
@@ -28,20 +30,23 @@ const inputPopupAddPlace = popupAdd.querySelector('.popup__input[name="place"]')
 const inputPopupAddlink = popupAdd.querySelector('.popup__input[name="link"]');
 const formElementAdd = popupAdd.querySelector('.popup__container');
 // Popup Img const
-const popupImg = document.querySelector('.popup_form_img');
-const handlePopupImgClose = popupImg.querySelector('.popup__close');
-const formElementImg = popupImg.querySelector('.popup__container');
-const popupImgclass = popupImg.querySelector('.popup__img');
-const popupImgHeading = popupImg.querySelector('.popup__heading');
+// const popupImg = document.querySelector('.popup_form_img');
+// const handlePopupImgClose = popupImg.querySelector('.popup__close');
+// const formElementImg = popupImg.querySelector('.popup__container');
+// const popupImgclass = popupImg.querySelector('.popup__img');
+// const popupImgHeading = popupImg.querySelector('.popup__heading');
 
 //-----------
 // функция добавления карточки и вешаем слушатели лайков и корзины
+const popupImg = new PopupWithImage(popupImgSelector);
+popupImg.setEventListeners();
+
 const cardList = new Section({
   items: initialCards,
   renderer: (cardItem) => {
     const card = new Card(cardItem, '#elem');
     const cardElement = card.generateCard();
-    cardElement.querySelector('.elements__img').addEventListener('click', showPopupImg);
+    cardElement.querySelector('.elements__img').addEventListener('click', (evt) => popupImg.open(evt));
     cardList.addItem(cardElement);
   }
 }, cardSection);
@@ -59,27 +64,28 @@ popupEdit1.setEventListeners();
 const popupAdd1 = new Popup(popupAddSelector);
 popupAdd1.setEventListeners();
 
+
 function showEditPopup() {
   inputPopupEditName.value = profileName.textContent;
   inputPopupEditJob.value = profilePersonDo.textContent;
   formEdit.resetValidation();
-  popupEdit1.openPopup();
+  popupEdit1.open();
 }
 
 function showAddPopup() {
   formElementAdd.reset();
   formAdd.resetValidation();
-  popupAdd1.openPopup();
+  popupAdd1.open();
 }
 
-function showPopupImg(event) {
-  const targetItem = event.target.closest('.elements__img');
+// function showPopupImg(event) {
+//   const targetItem = event.target.closest('.elements__img');
 
-  popupImgclass.src = targetItem.src;
-  popupImgclass.alt = targetItem.alt;
-  popupImgHeading.textContent = targetItem.alt;
-  openPopup(popupImg);
-}
+//   popupImgclass.src = targetItem.src;
+//   popupImgclass.alt = targetItem.alt;
+//   popupImgHeading.textContent = targetItem.alt;
+//   popupImg1.open();
+// }
 
 function submitFormHandlerEdit(evt) {
   const button = popupEdit.querySelector(defaultValues.submitButtonSelector);
@@ -87,7 +93,7 @@ function submitFormHandlerEdit(evt) {
   evt.preventDefault();
   profileName.textContent = inputPopupEditName.value;
   profilePersonDo.textContent = inputPopupEditJob.value;
-  popupEdit1.closePopup();
+  popupEdit1.close();
 }
 
 function submitFormHandlerAdd(evt) {
@@ -97,12 +103,12 @@ function submitFormHandlerAdd(evt) {
     link: inputPopupAddlink.value
   }
   );
-  popupAdd1.closePopup();
+  popupAdd1.close();
 }
 
-function closePopupImg() {
-  closePopup(popupImg);
-}
+// function closePopupImg() {
+//   popupImg1.close();
+// }
 
 // function closeEscPopup(evt) {
 //   const activePopup = document.querySelector('.popup_opened');
@@ -137,5 +143,5 @@ handleAddButton.addEventListener('click', showAddPopup);
 //handlePopupAddClose.addEventListener('click', () => { closePopup(popupAdd) });
 formElementAdd.addEventListener('submit', submitFormHandlerAdd);
 // слушатели PopupImg
-handlePopupImgClose.addEventListener('click', () => { closePopup(popupImg) });
-formElementImg.addEventListener('submit', closePopupImg);
+//handlePopupImgClose.addEventListener('click', () => { closePopup(popupImg) });
+//formElementImg.addEventListener('submit', closePopupImg);
