@@ -1,12 +1,17 @@
-import { initialCards, Card } from './card.js'
-import { defaultValues, FormValidator } from './FormValidator.js'
+import { initialCards, constValid } from '../components/costants.js'
+import Card from '../components/Card.js'
+import FormValidator from '../components/FormValidator.js'
+import Section from '../components/Section.js'
 // Key close popup
 const ESCAPE = 'Escape';
+// Section to enter cards
+const cardSection = '.elements';
+
+
 // Profile const
 const profileName = document.querySelector('.profile__name');
 const profilePersonDo = document.querySelector('.profile__person-do');
-// elements const
-const elementsOnlineItem = document.querySelector('.elements');
+
 // Popup Edit const
 const handleEditButton = document.querySelector('.profile__edit-button');
 const popupEdit = document.querySelector('.popup_form_edit');
@@ -30,18 +35,28 @@ const popupImgHeading = popupImg.querySelector('.popup__heading');
 
 //-----------
 // функция добавления карточки и вешаем слушатели лайков и корзины
-function addCard(item) {
-  const card = new Card(item, '#elem');
-  const cardElement = card.generateCard();
-  cardElement.querySelector('.elements__img').addEventListener('click', showPopupImg);
-  elementsOnlineItem.prepend(cardElement);
-}
+const cardList = new Section({
+  items: initialCards,
+  renderer: (cardItem) => {
+    const card = new Card(cardItem, '#elem');
+    const cardElement = card.generateCard();
+    cardElement.querySelector('.elements__img').addEventListener('click', showPopupImg);
+    cardList.addItem(cardElement);
+  }
+}, cardSection);
+cardList.renderItems();
+// function addCard(item) {
+//   const card = new Card(item, '#elem');
+//   const cardElement = card.generateCard();
+//   cardElement.querySelector('.elements__img').addEventListener('click', showPopupImg);
+//   elementsOnlineItem.prepend(cardElement);
+// }
 // Вывод дефолтного массива карточек
-initialCards.reverse().forEach(item => addCard(item));
+// initialCards.reverse().forEach(item => addCard(item));
 // Инициализация валидации форм
-const formEdit = new FormValidator(defaultValues, popupEdit);
+const formEdit = new FormValidator(constValid, popupEdit);
 formEdit.enableValidation();
-const formAdd = new FormValidator(defaultValues, popupAdd);
+const formAdd = new FormValidator(constValid, popupAdd);
 formAdd.enableValidation();
 
 function showEditPopup() {
