@@ -87,7 +87,7 @@ function submitFormHandlerEdit(evt) {
   evt.preventDefault();
   profileName.textContent = inputPopupEditName.value;
   profilePersonDo.textContent = inputPopupEditJob.value;
-  closePopup(popupEdit);
+  popupEdit1.closePopup();
 }
 
 function submitFormHandlerAdd(evt) {
@@ -97,36 +97,36 @@ function submitFormHandlerAdd(evt) {
     link: inputPopupAddlink.value
   }
   );
-  closePopup(popupAdd);
+  popupAdd1.closePopup();
 }
 
 function closePopupImg() {
   closePopup(popupImg);
 }
 
-function closeEscPopup(evt) {
-  const activePopup = document.querySelector('.popup_opened');
+// function closeEscPopup(evt) {
+//   const activePopup = document.querySelector('.popup_opened');
 
-  if (evt.key === ESCAPE) closePopup(activePopup);
-}
+//   if (evt.key === ESCAPE) closePopup(activePopup);
+// }
 
-function closeClickOverlay(evt) {
-  const activePopup = document.querySelector('.popup_opened');
+// function closeClickOverlay(evt) {
+//   const activePopup = document.querySelector('.popup_opened');
 
-  if (evt.target === activePopup) closePopup(activePopup);
-}
+//   if (evt.target === activePopup) closePopup(activePopup);
+// }
 
-function openPopup(popup) {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closeEscPopup);
-  document.addEventListener('click', closeClickOverlay);
-}
+// function openPopup(popup) {
+//   popup.classList.add('popup_opened');
+//   document.addEventListener('keydown', closeEscPopup);
+//   document.addEventListener('click', closeClickOverlay);
+// }
 
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeEscPopup);
-  document.removeEventListener('click', closeClickOverlay);
-}
+// function closePopup(popup) {
+//   popup.classList.remove('popup_opened');
+//   document.removeEventListener('keydown', closeEscPopup);
+//   document.removeEventListener('click', closeClickOverlay);
+// }
 
 // слушатели PopupEdit
 handleEditButton.addEventListener('click', showEditPopup);
