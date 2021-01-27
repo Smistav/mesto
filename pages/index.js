@@ -2,12 +2,13 @@ import { initialCards, constValid } from '../components/costants.js'
 import Card from '../components/Card.js'
 import FormValidator from '../components/FormValidator.js'
 import Section from '../components/Section.js'
+import Popup from '../components/Popup.js'
 // Key close popup
 const ESCAPE = 'Escape';
 // Section to enter cards
 const cardSection = '.elements';
-
-
+const popupEditSelector = '.popup_form_edit';
+const popupAddSelector = '.popup_form_add';
 // Profile const
 const profileName = document.querySelector('.profile__name');
 const profilePersonDo = document.querySelector('.profile__person-do');
@@ -45,31 +46,30 @@ const cardList = new Section({
   }
 }, cardSection);
 cardList.renderItems();
-// function addCard(item) {
-//   const card = new Card(item, '#elem');
-//   const cardElement = card.generateCard();
-//   cardElement.querySelector('.elements__img').addEventListener('click', showPopupImg);
-//   elementsOnlineItem.prepend(cardElement);
-// }
-// Вывод дефолтного массива карточек
-// initialCards.reverse().forEach(item => addCard(item));
+
 // Инициализация валидации форм
 const formEdit = new FormValidator(constValid, popupEdit);
 formEdit.enableValidation();
 const formAdd = new FormValidator(constValid, popupAdd);
 formAdd.enableValidation();
 
+// попапы
+const popupEdit1 = new Popup(popupEditSelector);
+popupEdit1.setEventListeners();
+const popupAdd1 = new Popup(popupAddSelector);
+popupAdd1.setEventListeners();
+
 function showEditPopup() {
   inputPopupEditName.value = profileName.textContent;
   inputPopupEditJob.value = profilePersonDo.textContent;
   formEdit.resetValidation();
-  openPopup(popupEdit);
+  popupEdit1.openPopup();
 }
 
 function showAddPopup() {
   formElementAdd.reset();
   formAdd.resetValidation();
-  openPopup(popupAdd);
+  popupAdd1.openPopup();
 }
 
 function showPopupImg(event) {
@@ -130,11 +130,11 @@ function closePopup(popup) {
 
 // слушатели PopupEdit
 handleEditButton.addEventListener('click', showEditPopup);
-handlePopupEditClose.addEventListener('click', () => { closePopup(popupEdit) });
+//handlePopupEditClose.addEventListener('click', () => { closePopup(popupEdit) });
 formElementEdit.addEventListener('submit', submitFormHandlerEdit);
 // слушатели PopupAdd
 handleAddButton.addEventListener('click', showAddPopup);
-handlePopupAddClose.addEventListener('click', () => { closePopup(popupAdd) });
+//handlePopupAddClose.addEventListener('click', () => { closePopup(popupAdd) });
 formElementAdd.addEventListener('submit', submitFormHandlerAdd);
 // слушатели PopupImg
 handlePopupImgClose.addEventListener('click', () => { closePopup(popupImg) });
