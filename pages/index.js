@@ -2,7 +2,7 @@ import { initialCards, constValid } from '../components/costants.js'
 import Card from '../components/Card.js'
 import FormValidator from '../components/FormValidator.js'
 import Section from '../components/Section.js'
-import Popup from '../components/Popup.js'
+//import Popup from '../components/Popup.js'
 import PopupWithImage from '../components/PopupWithImage.js'
 import PopupWithForm from '../components/PopupWithForm.js'
 
@@ -12,8 +12,13 @@ const cardSection = '.elements';
 const popupEditSelector = '.popup_form_edit';
 const popupAddSelector = '.popup_form_add';
 const popupImgSelector = '.popup_form_img';
-const handleEditButton = document.querySelector('.profile__edit-button');
-const handleAddButton = document.querySelector('.profile__add-button');
+// Edit Profile Button
+const EditButton = '.profile__edit-button';
+// Add Card Button
+const AddButton = '.profile__add-button';
+//-----------
+const handleEditButton = document.querySelector(EditButton);
+const handleAddButton = document.querySelector(AddButton);
 // Profile const
 const profileName = document.querySelector('.profile__name');
 const profilePersonDo = document.querySelector('.profile__person-do');
@@ -40,15 +45,16 @@ const inputPopupAddlink = document.querySelector('.popup__input[name="link"]');
 // const popupImgHeading = popupImg.querySelector('.popup__heading');
 
 //-----------
-// попапы
+// Initialization PopupEdit
 const popupEdit = new PopupWithForm({
   popupSelector: popupEditSelector,
-  handleFormSubmit: () => {
-    profileName.textContent = inputPopupEditName.value;
-    profilePersonDo.textContent = inputPopupEditJob.value;
+  handleFormSubmit: (input) => {
+    profileName.textContent = input.name;
+    profilePersonDo.textContent = input.job;
   }
 });
 popupEdit.setEventListeners();
+// Initialization PopupAdd
 const popupAdd = new PopupWithForm({
   popupSelector: popupAddSelector,
   handleFormSubmit: () => {
@@ -60,9 +66,10 @@ const popupAdd = new PopupWithForm({
   }
 });
 popupAdd.setEventListeners();
+// Initialization PopupImg
 const popupImg = new PopupWithImage(popupImgSelector);
 popupImg.setEventListeners();
-
+//// Initialization Card
 const cardList = new Section({
   items: initialCards,
   renderer: (cardItem) => {
@@ -74,9 +81,10 @@ const cardList = new Section({
 }, cardSection);
 cardList.renderItems();
 
-// Инициализация валидации форм
+// Initialization FormValidation PopupEdit
 const formEdit = new FormValidator(constValid, popupEditSelector);
 formEdit.enableValidation();
+// Initialization FormValidation PopupAdd
 const formAdd = new FormValidator(constValid, popupAddSelector);
 formAdd.enableValidation();
 
