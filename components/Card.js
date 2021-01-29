@@ -1,36 +1,9 @@
-export { initialCards, Card }
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-class Card {
-  constructor(data, cardSelector) {
-    this._name = data.name;
-    this._image = data.link;
+export default class Card {
+  constructor({ card, handleCardClick }, cardSelector) {
+    this._name = card.name;
+    this._image = card.link;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
   _getTemplate() {
     const cardElement = document
@@ -55,12 +28,14 @@ class Card {
     this._element.querySelector('.elements__trash-button').addEventListener('click', () => {
       this._handleElementTrash()
     });
+    this._element.querySelector('.elements__img').addEventListener('click', (evt) => {
+      this._handleCardClick(evt)
+    });
   }
 
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
-
     this._element.querySelector('.elements__img').src = this._image;
     this._element.querySelector('.elements__img').alt = this._name;
     this._element.querySelector('.elements__heading').textContent = this._name;

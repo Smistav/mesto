@@ -1,23 +1,12 @@
-export { defaultValues, FormValidator }
-
-const defaultValues = {
-  formSelector: '.popup__container_form_isform',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-}
-
-class FormValidator {
-  constructor(defaultValues, form) {
-    this._form = form;
-    this._formSelector = defaultValues.formSelector;
-    this._input = defaultValues.inputSelector;
-    this._submit = defaultValues.submitButtonSelector;
-    this._inactiveButton = defaultValues.inactiveButtonClass;
-    this._inputError = defaultValues.inputErrorClass;
-    this._error = defaultValues.errorClass;
+export default class FormValidator {
+  constructor(constValid, form) {
+    this._form = document.querySelector(form);
+    this._formSelector = constValid.formSelector;
+    this._input = constValid.inputSelector;
+    this._submit = constValid.submitButtonSelector;
+    this._inactiveButton = constValid.inactiveButtonClass;
+    this._inputError = constValid.inputErrorClass;
+    this._error = constValid.errorClass;
   }
 
   _showInputError(inputElement) {
