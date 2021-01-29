@@ -1,4 +1,8 @@
-import { initialCards, constValid } from '../components/costants.js'
+import {
+  initialCards, constValid, cardSection,
+  popupEditSelector, popupAddSelector, popupImgSelector,
+  editButton, addButton
+} from '../components/costants.js'
 import Card from '../components/Card.js'
 import FormValidator from '../components/FormValidator.js'
 import Section from '../components/Section.js'
@@ -6,19 +10,10 @@ import Section from '../components/Section.js'
 import PopupWithImage from '../components/PopupWithImage.js'
 import PopupWithForm from '../components/PopupWithForm.js'
 
-// Section to enter cards
-const cardSection = '.elements';
-// Popup Selectors
-const popupEditSelector = '.popup_form_edit';
-const popupAddSelector = '.popup_form_add';
-const popupImgSelector = '.popup_form_img';
-// Edit Profile Button
-const EditButton = '.profile__edit-button';
-// Add Card Button
-const AddButton = '.profile__add-button';
+
 //-----------
-const handleEditButton = document.querySelector(EditButton);
-const handleAddButton = document.querySelector(AddButton);
+const handleEditButton = document.querySelector(editButton);
+const handleAddButton = document.querySelector(addButton);
 // Profile const
 const profileName = document.querySelector('.profile__name');
 const profilePersonDo = document.querySelector('.profile__person-do');

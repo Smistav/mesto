@@ -1,4 +1,8 @@
-export { initialCards, constValid, ESCAPE }
+export {
+  initialCards, constValid, ESCAPE, cardSection,
+  popupEditSelector, popupAddSelector, popupImgSelector,
+  editButton, addButton
+}
 
 const constValid = {
   formSelector: '.popup__container_form_isform',
@@ -36,3 +40,13 @@ const initialCards = [
 ];
 // Key close popup
 const ESCAPE = 'Escape';
+// Section to enter cards
+const cardSection = '.elements';
+// Popup Selectors
+const popupEditSelector = '.popup_form_edit';
+const popupAddSelector = '.popup_form_add';
+const popupImgSelector = '.popup_form_img';
+// Edit Profile Button
+const editButton = '.profile__edit-button';
+// Add Card Button
+const addButton = '.profile__add-button';
