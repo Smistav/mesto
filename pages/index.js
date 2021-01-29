@@ -1,53 +1,49 @@
 import {
   initialCards, constValid, cardSection,
   popupEditSelector, popupAddSelector, popupImgSelector,
-  editButton, addButton
+  editButton, addButton, cardTemplate, profileName, profilePersonDo
 } from '../components/costants.js'
 import Card from '../components/Card.js'
 import FormValidator from '../components/FormValidator.js'
 import Section from '../components/Section.js'
-//import Popup from '../components/Popup.js'
+import UserInfo from '../components/UserInfo.js'
 import PopupWithImage from '../components/PopupWithImage.js'
 import PopupWithForm from '../components/PopupWithForm.js'
 
-//-----------
+// button Edit and Add
 const handleEditButton = document.querySelector(editButton);
 const handleAddButton = document.querySelector(addButton);
-// Profile const
-const profileName = document.querySelector('.profile__name');
-const profilePersonDo = document.querySelector('.profile__person-do');
-// PopupEdit inputs
-const inputPopupEditName = document.querySelector('.popup__input[name="name"]');
-const inputPopupEditJob = document.querySelector('.popup__input[name="job"]');
+// Initialization user
+const user = new UserInfo(profileName, profilePersonDo);
 
 // Initialization PopupEdit
 const popupEdit = new PopupWithForm({
   popupSelector: popupEditSelector,
-  handleFormSubmit: (input) => {
-    profileName.textContent = input.name;
-    profilePersonDo.textContent = input.job;
-  }
+  handleFormSubmit: input => user.setUserInfo(input)
 });
 popupEdit.setEventListeners();
+
 // Initialization PopupAdd
 const popupAdd = new PopupWithForm({
   popupSelector: popupAddSelector,
   handleFormSubmit: (input) => {
-    const card = new Card(input, '#elem');
+    const card = new Card(input, cardTemplate);
     const cardElement = card.generateCard();
     cardElement.querySelector('.elements__img').addEventListener('click', (evt) => popupImg.open(evt));
     cardList.addItem(cardElement);
   }
 });
 popupAdd.setEventListeners();
+
 // Initialization PopupImg
 const popupImg = new PopupWithImage(popupImgSelector);
 popupImg.setEventListeners();
+
 // Initialization Card
 const cardList = new Section({
   items: initialCards,
   renderer: (cardItem) => {
-    const card = new Card(cardItem, '#elem');
+    const card = new Card(cardItem, cardTemplate);
     const cardElement = card.generateCard();
     cardElement.querySelector('.elements__img').addEventListener('click', (evt) => popupImg.open(evt));
     cardList.addItem(cardElement);
@@ -58,13 +54,13 @@ cardList.renderItems();
 // Initialization FormValidation PopupEdit
 const formEdit = new FormValidator(constValid, popupEditSelector);
 formEdit.enableValidation();
+
 // Initialization FormValidation PopupAdd
 const formAdd = new FormValidator(constValid, popupAddSelector);
 formAdd.enableValidation();
 
 function showEditPopup() {
-  inputPopupEditName.value = profileName.textContent;
-  inputPopupEditJob.value = profilePersonDo.textContent;
+  user.getUserInfo();
   formEdit.resetValidation();
   popupEdit.open();
 }
@@ -76,5 +72,6 @@ function showAddPopup() {
 
 // listener editButton
 handleEditButton.addEventListener('click', showEditPopup);
+
 // listener addButton
 handleAddButton.addEventListener('click', showAddPopup);

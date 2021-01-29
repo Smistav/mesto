@@ -1,7 +1,7 @@
 export {
   initialCards, constValid, ESCAPE, cardSection,
   popupEditSelector, popupAddSelector, popupImgSelector,
-  editButton, addButton
+  editButton, addButton, cardTemplate, profileName, profilePersonDo
 }
 
 const constValid = {
@@ -40,6 +40,8 @@ const initialCards = [
 ];
 // Key close popup
 const ESCAPE = 'Escape';
+// Template card
+const cardTemplate = '#elem';
 // Section to enter cards
 const cardSection = '.elements';
 // Popup Selectors
@@ -50,3 +52,6 @@ const popupImgSelector = '.popup_form_img';
 const editButton = '.profile__edit-button';
 // Add Card Button
 const addButton = '.profile__add-button';
+// User name and job
+const profileName = '.profile__name';
+const profilePersonDo = '.profile__person-do';
