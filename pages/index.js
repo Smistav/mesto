@@ -19,9 +19,6 @@ const profilePersonDo = document.querySelector('.profile__person-do');
 // PopupEdit inputs
 const inputPopupEditName = document.querySelector('.popup__input[name="name"]');
 const inputPopupEditJob = document.querySelector('.popup__input[name="job"]');
-// PopupAdd inputs
-const inputPopupAddPlace = document.querySelector('.popup__input[name="place"]');
-const inputPopupAddlink = document.querySelector('.popup__input[name="link"]');
 
 // Initialization PopupEdit
 const popupEdit = new PopupWithForm({
@@ -35,12 +32,11 @@ popupEdit.setEventListeners();
 // Initialization PopupAdd
 const popupAdd = new PopupWithForm({
   popupSelector: popupAddSelector,
-  handleFormSubmit: () => {
-    //addCard({
-    //     name: inputPopupAddPlace.value,
-    //     link: inputPopupAddlink.value
-    //   }
-    //   );
+  handleFormSubmit: (input) => {
+    const card = new Card(input, '#elem');
+    const cardElement = card.generateCard();
+    cardElement.querySelector('.elements__img').addEventListener('click', (evt) => popupImg.open(evt));
+    cardList.addItem(cardElement);
   }
 });
 popupAdd.setEventListeners();
@@ -74,7 +70,6 @@ function showEditPopup() {
 }
 
 function showAddPopup() {
-  //formAdd.reset();
   formAdd.resetValidation();
   popupAdd.open();
 }
