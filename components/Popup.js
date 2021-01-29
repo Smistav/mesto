@@ -2,6 +2,8 @@ import { ESCAPE } from '../components/costants.js'
 export default class Popup {
   constructor(popupSelector) {
     this._popupSelector = document.querySelector(popupSelector);
+    this._escHandleBind = this._handleEscClose.bind(this);
+    this._overlayHandleBind = this._handleOverlayClose.bind(this);
   }
   _handleEscClose(evt) {
     if (evt.key === ESCAPE) this.close(this._popupSelector);
@@ -15,12 +17,12 @@ export default class Popup {
   }
   open() {
     this._popupSelector.classList.add('popup_opened');
-    document.addEventListener('keydown', (evt) => this._handleEscClose(evt));
-    document.addEventListener('click', (evt) => this._handleOverlayClose(evt));
+    document.addEventListener('keydown', this._escHandleBind);
+    document.addEventListener('click', this._overlayHandleBind);
   }
   close() {
     this._popupSelector.classList.remove('popup_opened');
-    document.removeEventListener('keydown', (evt) => this._handleEscClose(evt));
-    document.removeEventListener('click', (evt) => this._handleOverlayClose(evt));
+    document.removeEventListener('keydown', this._escHandleBind);
+    document.removeEventListener('click', this._overlayHandleBind);
   }
 }
