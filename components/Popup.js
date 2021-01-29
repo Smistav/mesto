@@ -1,4 +1,4 @@
-import { ESCAPE } from '../components/costants.js'
+import { ESCAPE } from '../utils/costants.js'
 export default class Popup {
   constructor(popupSelector) {
     this._popupSelector = document.querySelector(popupSelector);

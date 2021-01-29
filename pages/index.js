@@ -2,7 +2,7 @@ import {
   initialCards, constValid, cardSection,
   popupEditSelector, popupAddSelector, popupImgSelector,
   editButton, addButton, cardTemplate, profileName, profilePersonDo
-} from '../components/costants.js'
+} from '../utils/costants.js'
 import Card from '../components/Card.js'
 import FormValidator from '../components/FormValidator.js'
 import Section from '../components/Section.js'
@@ -27,9 +27,11 @@ popupEdit.setEventListeners();
 const popupAdd = new PopupWithForm({
   popupSelector: popupAddSelector,
   handleFormSubmit: (input) => {
-    const card = new Card(input, cardTemplate);
+    const card = new Card({
+      card: input,
+      handleCardClick: (evt) => popupImg.open(evt)
+    }, cardTemplate);
     const cardElement = card.generateCard();
-    cardElement.querySelector('.elements__img').addEventListener('click', (evt) => popupImg.open(evt));
     cardList.addItem(cardElement);
   }
 });
@@ -43,9 +45,11 @@ popupImg.setEventListeners();
 const cardList = new Section({
   items: initialCards,
   renderer: (cardItem) => {
-    const card = new Card(cardItem, cardTemplate);
+    const card = new Card({
+      card: cardItem,
+      handleCardClick: (evt) => popupImg.open(evt)
+    }, cardTemplate);
     const cardElement = card.generateCard();
-    cardElement.querySelector('.elements__img').addEventListener('click', (evt) => popupImg.open(evt));
     cardList.addItem(cardElement);
   }
 }, cardSection);

@@ -12,6 +12,5 @@ export default class PopupWithImage extends Popup {
     popupImgclass.alt = targetItem.alt;
     popupImgHeading.textContent = targetItem.alt;
     super.open();
-
   }
 }
