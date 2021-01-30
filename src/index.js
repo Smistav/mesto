@@ -1,14 +1,15 @@
+import './pages/index.css';
 import {
   initialCards, constValid, cardSection,
   popupEditSelector, popupAddSelector, popupImgSelector,
   editButton, addButton, cardTemplate, profileName, profilePersonDo
-} from '../utils/costants.js'
-import Card from '../components/Card.js'
-import FormValidator from '../components/FormValidator.js'
-import Section from '../components/Section.js'
-import UserInfo from '../components/UserInfo.js'
-import PopupWithImage from '../components/PopupWithImage.js'
-import PopupWithForm from '../components/PopupWithForm.js'
+} from './utils/costants.js'
+import Card from './components/Card.js'
+import FormValidator from './components/FormValidator.js'
+import Section from './components/Section.js'
+import UserInfo from './components/UserInfo.js'
+import PopupWithImage from './components/PopupWithImage.js'
+import PopupWithForm from './components/PopupWithForm.js'
 
 // button Edit and Add
 const handleEditButton = document.querySelector(editButton);
