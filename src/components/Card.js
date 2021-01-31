@@ -28,16 +28,17 @@ export default class Card {
     this._element.querySelector('.elements__trash-button').addEventListener('click', () => {
       this._handleElementTrash()
     });
-    this._element.querySelector('.elements__img').addEventListener('click', (evt) => {
-      this._handleCardClick(evt)
+    this._element.querySelector('.elements__img').addEventListener('click', () => {
+      this._handleCardClick(this._name, this._image)
     });
   }
 
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
-    this._element.querySelector('.elements__img').src = this._image;
-    this._element.querySelector('.elements__img').alt = this._name;
+    const imageElement = this._element.querySelector('.elements__img');
+    imageElement.src = this._image;
+    imageElement.alt = this._name;
     this._element.querySelector('.elements__heading').textContent = this._name;
 
     return this._element;

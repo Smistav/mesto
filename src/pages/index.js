@@ -12,8 +12,8 @@ import PopupWithImage from '../components/PopupWithImage.js'
 import PopupWithForm from '../components/PopupWithForm.js'
 
 // button Edit and Add
-const handleEditButton = document.querySelector(editButton);
-const handleAddButton = document.querySelector(addButton);
+const editButtonElement = document.querySelector(editButton);
+const addButtonElement = document.querySelector(addButton);
 // Initialization user
 const user = new UserInfo(profileName, profilePersonDo);
 
@@ -30,7 +30,9 @@ const popupAdd = new PopupWithForm({
   handleFormSubmit: (input) => {
     const card = new Card({
       card: input,
-      handleCardClick: (evt) => popupImg.open(evt)
+      handleCardClick: (name, image) => {
+        return popupImg.open(name, image);
+      }
     }, cardTemplate);
     const cardElement = card.generateCard();
     cardList.addItem(cardElement);
@@ -48,7 +50,9 @@ const cardList = new Section({
   renderer: (cardItem) => {
     const card = new Card({
       card: cardItem,
-      handleCardClick: (evt) => popupImg.open(evt)
+      handleCardClick: (name, image) => {
+        return popupImg.open(name, image);
+      }
     }, cardTemplate);
     const cardElement = card.generateCard();
     cardList.addItem(cardElement);
@@ -65,7 +69,8 @@ const formAdd = new FormValidator(constValid, popupAddSelector);
 formAdd.enableValidation();
 
 function showEditPopup() {
-  user.getUserInfo();
+  document.querySelector('.popup__input[name="name"]').value = user.getUserInfo().name;
+  document.querySelector('.popup__input[name="job"]').value = user.getUserInfo().job;
   formEdit.resetValidation();
   popupEdit.open();
 }
@@ -76,7 +81,7 @@ function showAddPopup() {
 }
 
 // listener editButton
-handleEditButton.addEventListener('click', showEditPopup);
+editButtonElement.addEventListener('click', showEditPopup);
 
 // listener addButton
-handleAddButton.addEventListener('click', showAddPopup);
+addButtonElement.addEventListener('click', showAddPopup);
