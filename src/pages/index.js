@@ -2,7 +2,8 @@ import '../pages/index.css';
 import {
   initialCards, constValid, cardSection,
   popupEditSelector, popupAddSelector, popupImgSelector,
-  editButton, addButton, cardTemplate, profileName, profilePersonDo
+  editButton, addButton, cardTemplate, profileName, profilePersonDo,
+  inputName, inputJob
 } from '../utils/costants.js'
 import Card from '../components/Card.js'
 import FormValidator from '../components/FormValidator.js'
@@ -14,6 +15,9 @@ import PopupWithForm from '../components/PopupWithForm.js'
 // button Edit and Add
 const editButtonElement = document.querySelector(editButton);
 const addButtonElement = document.querySelector(addButton);
+
+const inputEditName = document.querySelector(inputName);
+const inputEditJob = document.querySelector(inputJob);
 // Initialization user
 const user = new UserInfo(profileName, profilePersonDo);
 
@@ -69,8 +73,8 @@ const formAdd = new FormValidator(constValid, popupAddSelector);
 formAdd.enableValidation();
 
 function showEditPopup() {
-  document.querySelector('.popup__input[name="name"]').value = user.getUserInfo().name;
-  document.querySelector('.popup__input[name="job"]').value = user.getUserInfo().job;
+  inputEditName.value = user.getUserInfo().name;
+  inputEditJob.value = user.getUserInfo().job;
   formEdit.resetValidation();
   popupEdit.open();
 }

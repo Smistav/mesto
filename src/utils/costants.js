@@ -1,7 +1,8 @@
 export {
   initialCards, constValid, ESCAPE, cardSection,
   popupEditSelector, popupAddSelector, popupImgSelector,
-  editButton, addButton, cardTemplate, profileName, profilePersonDo
+  editButton, addButton, cardTemplate, profileName, profilePersonDo,
+  inputName, inputJob
 }
 
 const constValid = {
@@ -55,3 +56,6 @@ const addButton = '.profile__add-button';
 // User name and job
 const profileName = '.profile__name';
 const profilePersonDo = '.profile__person-do';
+// input userName and UserJob
+const inputName = '.popup__input[name="name"]';
+const inputJob = '.popup__input[name="job"]';
