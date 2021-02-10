@@ -27,7 +27,7 @@
   <footer class="footer">
     <p class="footer__copyright">&commat; 2020 Mesto Russia</p>
   </footer>
-  <!-- window PopupEdit  -->
+  <!-- popupEdit  -->
   <div class="popup popup_form_edit">
     <form name="form_edit" class="popup__container popup__container_form_isform" novalidate>
       <button type="button" class="popup__close"></button>
@@ -45,8 +45,8 @@
       <button type="submit" name="button" class="popup__button">Сохранить</button>
     </form>
   </div>
-  <!-- end Popup  -->
-  <!-- window PopupAddItem  -->
+  <!-- popupEdit -->
+  <!-- popupAdd  -->
   <div class="popup popup_form_add">
     <form name="form_add" class="popup__container popup__container_form_add popup__container_form_isform" novalidate>
       <button type="button" class="popup__close popup__close_form_add"></button>
@@ -64,8 +64,8 @@
       <button type="submit" name="button" class="popup__button">Сохранить</button>
     </form>
   </div>
-  <!-- end Popup  -->
-  <!-- window PopupBigImg  -->
+  <!-- popupAdd  -->
+  <!-- popupImg  -->
   <div class="popup popup_form_img">
     <div class="popup__container popup__container_form_img">
       <button type="button" class="popup__close popup__close_form_img"></button>
@@ -73,8 +73,16 @@
       <h4 class="popup__heading popup__heading_form_img"></h4>
     </div>
   </div>
-  <!-- end Popup  -->
-
+  <!-- popupImg  -->
+  <!-- popupConfirm  -->
+  <div class="popup popup_form_confirm">
+    <div class="popup__container">
+      <button type="button" class="popup__close"></button>
+      <h4 class="popup__heading popup__heading_form_confirm">Вы уверены?</h4>
+      <button type="button" name="button" class="popup__button">Да</button>
+    </div>
+  </div>
+  <!-- popupConfirm -->
   <!-- card template  -->
   <template id="elem">
     <figure class="elements__item">

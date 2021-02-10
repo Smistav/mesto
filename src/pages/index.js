@@ -1,7 +1,7 @@
 import '../pages/index.css';
 import {
   initialCards, constValid, cardSection,
-  popupEditSelector, popupAddSelector, popupImgSelector,
+  popupEditSelector, popupAddSelector, popupImgSelector, popupConfirmSelector,
   editButton, addButton, cardTemplate, profileName, profilePersonDo,
   inputName, inputJob
 } from '../utils/costants.js'
@@ -9,6 +9,7 @@ import Card from '../components/Card.js'
 import FormValidator from '../components/FormValidator.js'
 import Section from '../components/Section.js'
 import UserInfo from '../components/UserInfo.js'
+import PopupConfirm from '../components/PopupConfirm.js'
 import PopupWithImage from '../components/PopupWithImage.js'
 import PopupWithForm from '../components/PopupWithForm.js'
 
@@ -36,6 +37,9 @@ const popupAdd = new PopupWithForm({
       card: input,
       handleCardClick: (name, image) => {
         return popupImg.open(name, image);
+      },
+      handleCardClickTrash: (element) => {
+        return popupConfirm.open(element);
       }
     }, cardTemplate);
     const cardElement = card.generateCard();
@@ -48,6 +52,10 @@ popupAdd.setEventListeners();
 const popupImg = new PopupWithImage(popupImgSelector);
 popupImg.setEventListeners();
 
+// Initialization PopupConfirm
+const popupConfirm = new PopupConfirm(popupConfirmSelector);
+popupConfirm.setEventListeners();
+
 // Initialization Card
 const cardList = new Section({
   items: initialCards,
@@ -56,6 +64,9 @@ const cardList = new Section({
       card: cardItem,
       handleCardClick: (name, image) => {
         return popupImg.open(name, image);
+      },
+      handleCardClickTrash: (element) => {
+        return popupConfirm.open(element);
       }
     }, cardTemplate);
     const cardElement = card.generateCard();

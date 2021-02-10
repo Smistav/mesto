@@ -1,9 +1,10 @@
 export default class Card {
-  constructor({ card, handleCardClick }, cardSelector) {
+  constructor({ card, handleCardClick, handleCardClickTrash }, cardSelector) {
     this._name = card.name;
     this._image = card.link;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
+    this._handleCardClickTrash = handleCardClickTrash;
   }
   _getTemplate() {
     const cardElement = document
@@ -17,16 +18,16 @@ export default class Card {
   _handleElementHeart() {
     this._element.querySelector('.elements__heart-button').classList.toggle('elements__heart-button_active');
   }
-  _handleElementTrash() {
-    this._element.remove();
-  }
+  // _handleElementTrash() {
+  //   this._element.remove();
+  // }
 
   _setEventListeners() {
     this._element.querySelector('.elements__heart-button').addEventListener('click', () => {
       this._handleElementHeart()
     });
     this._element.querySelector('.elements__trash-button').addEventListener('click', () => {
-      this._handleElementTrash()
+      this._handleCardClickTrash(this._element)
     });
     this._element.querySelector('.elements__img').addEventListener('click', () => {
       this._handleCardClick(this._name, this._image)

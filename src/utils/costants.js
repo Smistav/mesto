@@ -1,6 +1,6 @@
 export {
   initialCards, constValid, ESCAPE, cardSection,
-  popupEditSelector, popupAddSelector, popupImgSelector,
+  popupEditSelector, popupAddSelector, popupImgSelector, popupConfirmSelector,
   editButton, addButton, cardTemplate, profileName, profilePersonDo,
   inputName, inputJob
 }
@@ -49,6 +49,7 @@ const cardSection = '.elements';
 const popupEditSelector = '.popup_form_edit';
 const popupAddSelector = '.popup_form_add';
 const popupImgSelector = '.popup_form_img';
+const popupConfirmSelector = '.popup_form_confirm';
 // Edit Profile Button
 const editButton = '.profile__edit-button';
 // Add Card Button

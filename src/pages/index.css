@@ -50,6 +50,9 @@
 @import url("../blocks/popup/__heading/_form/popup__heading_form_img.css");
 @import url("../blocks/popup/__close/_form/popup__close_form_img.css");
 
+/* Блок Popup-confirm */
+@import url("../blocks/popup/_form/popup_form_confirm.css");
+@import url("../blocks/popup/__heading/_form/popup__heading_form_confirm.css");
 /* Классы для Валидации */
 @import url("../blocks/popup/__button/_disabled/popup__button_disabled.css");
 @import url("../blocks/popup/__error/popup__error.css");
