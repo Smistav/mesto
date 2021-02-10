@@ -5,6 +5,7 @@ export default class UserInfo {
   }
   getUserInfo() {
     const user = { name: this._name.textContent, job: this._job.textContent };
+
     return user
   }
   setUserInfo(input) {
