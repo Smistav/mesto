@@ -127,7 +127,7 @@ formAdd.enableValidation();
 
 function showEditPopup() {
   inputEditName.value = user.getUserInfo().name;
-  inputEditJob.value = user.getUserInfo().job;
+  inputEditJob.value = user.getUserInfo().about;
   formEdit.resetValidation();
   popupEdit.open();
 }

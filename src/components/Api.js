@@ -1,10 +1,10 @@
 export default class Api {
   constructor(options) {
-    this._options = options;
+    ({ baseUrl: this._baseUrl, headers: this._headers } = options);
   }
 
   getInitialCards() {
-    return fetch(this._options.baseUrl + '/cards', { headers: this._options.headers })
+    return fetch(this._baseUrl + '/cards', { headers: this._headers })
       .then(res => {
         if (res.ok) {
           return res.json();
@@ -13,7 +13,7 @@ export default class Api {
       });
   }
   getUserInfo() {
-    return fetch(this._options.baseUrl + '/users/me', { headers: this._options.headers })
+    return fetch(this._baseUrl + '/users/me', { headers: this._headers })
       .then(res => {
         if (res.ok) {
           return res.json();

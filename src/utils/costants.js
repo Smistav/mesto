@@ -59,4 +59,4 @@ const profileName = '.profile__name';
 const profilePersonDo = '.profile__person-do';
 // input userName and UserJob
 const inputName = '.popup__input[name="name"]';
-const inputJob = '.popup__input[name="job"]';
+const inputJob = '.popup__input[name="about"]';
