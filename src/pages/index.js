@@ -26,7 +26,10 @@ const user = new UserInfo(profileName, profilePersonDo);
 // Initialization PopupEdit
 const popupEdit = new PopupWithForm({
   popupSelector: popupEditSelector,
-  handleFormSubmit: input => user.setUserInfo(input)
+  handleFormSubmit: input => {
+    user.setUserInfo(input);
+    api.setUserInfo(user.getUserInfo())
+  }
 });
 popupEdit.setEventListeners();
 

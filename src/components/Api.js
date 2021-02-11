@@ -21,5 +21,20 @@ export default class Api {
         return Promise.reject(`Ошибка: ${res.status}`);
       });
   }
-  // другие методы работы с API
+  setUserInfo({ name, about }) {
+    fetch(this._baseUrl + '/users/me', {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: name,
+        about: about
+      })
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      });
+  }
 }
