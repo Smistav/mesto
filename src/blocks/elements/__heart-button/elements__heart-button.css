@@ -1,9 +1,9 @@
 .elements__heart-button {
-  width: 21px;
-  height: 18px;
+  width: 22px;
+  height: 35px;
   background-image: url("../../../images/heart.svg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-position: top;
   background-color: #fff;
   padding: 0;
   border: none;
