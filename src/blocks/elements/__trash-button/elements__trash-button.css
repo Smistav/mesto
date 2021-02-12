@@ -8,7 +8,7 @@
   padding: 0;
   border: none;
   cursor: pointer;
-  display: block;
+  display: none;
   position: absolute;
   top: 18px;
   right: 15px;

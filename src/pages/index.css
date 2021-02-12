@@ -22,6 +22,7 @@
 @import url("../blocks/elements/__count/elements__heart-count.css");
 @import url("../blocks/elements/__heart-button/_active/elements__heart-button_active.css");
 @import url("../blocks/elements/__trash-button/elements__trash-button.css");
+@import url("../blocks/elements/__trash-button/_active/elements__trash-button_active.css");
 /* Блок Footer */
 @import url("../blocks/footer/footer.css");
 @import url("../blocks/footer/__copyright/footer__copyright.css");

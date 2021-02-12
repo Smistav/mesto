@@ -36,7 +36,7 @@ const api = new Api({
 const user = new UserInfo(profileNameSelector, profileAboutSelector);
 api.getUserInfo()
   .then((userInfo) => {
-    user.setUserInfo(userInfo)
+    user.setUserInfo(userInfo);
   })
   .catch((err) => {
     console.log(err);
