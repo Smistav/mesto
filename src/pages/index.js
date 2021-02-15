@@ -75,8 +75,6 @@ const popupAdd = new PopupWithForm({
       });
   }
 });
-
-
 popupAdd.setEventListeners();
 
 // Initialization PopupImg
@@ -84,16 +82,18 @@ const popupImg = new PopupWithImage(popupImgSelector);
 popupImg.setEventListeners();
 
 // Initialization PopupConfirm
-const popupConfirm = new PopupConfirm(popupConfirmSelector);
+const popupConfirm = new PopupConfirm({
+  handleClickButton: (element, id) => {
+    api.deleteCard(id)
+      .then(() => {
+        element.remove();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+}, popupConfirmSelector);
 popupConfirm.setEventListeners();
-
-api.deleteCard()
-  .then((res) => {
-
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
 // Initialization Card
 api.getInitialCards()
@@ -107,7 +107,7 @@ api.getInitialCards()
             return popupImg.open(name, image);
           },
           handleCardClickTrash: (element) => {
-            return popupConfirm.open(element);
+            return popupConfirm.open(element, cardItem);
           }
         }, cardTemplate, user);
         const cardElement = card.generateCard();
