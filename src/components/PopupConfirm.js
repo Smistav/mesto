@@ -2,17 +2,21 @@ import Popup from '../components/Popup.js'
 export default class PopupConfirm extends Popup {
   constructor(popupSelector) {
     super(popupSelector);
+    this._buttonPopup = this._popupSelector.querySelector('.popup__button');
+
   }
   open(element) {
     super.open();
     this._element = element;
   }
   setEventListeners() {
-    super.setEventListeners();
-    const buttonPopup = this._popupSelector.querySelector('.popup__button');
-    buttonPopup.addEventListener('click', () => {
-      this._element.remove();
-      this.close()
-    });
+
+    this._buttonPopup.addEventListener('click', this._reset);
+  }
+  close() {
+    super.close();
+    //this._element.remove();
+    this._buttonPopup.removeEventListener('click', this._reset);
+
   }
 }

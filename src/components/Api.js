@@ -17,11 +17,11 @@ export default class Api {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
-        name: name,
-        link: link
+        name,
+        link
       })
     })
-      .then(res => {
+      .then((res) => {
         if (res.ok) {
           return res.json();
         }
@@ -47,6 +47,18 @@ export default class Api {
       })
     })
       .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      });
+  }
+  deleteCard(id) {
+    fetch(this._baseUrl + '/cards/' + id, {
+      method: 'DELETE',
+      headers: this._headers,
+    })
+      .then((res) => {
         if (res.ok) {
           return res.json();
         }

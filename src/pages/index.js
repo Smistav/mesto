@@ -64,7 +64,7 @@ const popupAdd = new PopupWithForm({
       handleCardClickTrash: (element) => {
         return popupConfirm.open(element);
       }
-    }, cardTemplate);
+    }, cardTemplate, user);
     const cardElement = card.generateCard();
     cardList.addItem(cardElement);
     api.addNewCard(input);
@@ -97,7 +97,7 @@ api.getInitialCards()
           handleCardClickTrash: (element) => {
             return popupConfirm.open(element);
           }
-        }, cardTemplate);
+        }, cardTemplate, user);
         const cardElement = card.generateCard();
         cardList.addItem(cardElement);
       }
