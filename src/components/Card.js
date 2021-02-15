@@ -2,12 +2,12 @@ export default class Card {
   constructor({ card, handleCardClick, handleCardClickTrash }, cardSelector, user) {
     this._name = card.name;
     this._image = card.link;
-    this._counterLikes = card.likes;
-    this._cardOwner = card.owner;
+    this._counterLikes = card.likes.length;
+    this._cardOwnerId = card.owner._id;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
     this._handleCardClickTrash = handleCardClickTrash;
-    this._user = user;
+    this._userId = user._id;
   }
   _getTemplate() {
     const cardElement = document
@@ -35,7 +35,7 @@ export default class Card {
   }
 
   _checkOwnerCard() {
-    if ((!this._cardOwner) || (this._cardOwner._id === this._user._id)) {
+    if (this._cardOwnerId === this._userId) {
       this._element.querySelector('.elements__trash-button').classList.add('elements__trash-button_active');
     }
   }
@@ -47,9 +47,7 @@ export default class Card {
     imageElement.src = this._image;
     imageElement.alt = this._name;
     this._element.querySelector('.elements__heading').textContent = this._name;
-    if (this._counterLikes) {
-      this._element.querySelector('.elements__heart-count').textContent = this._counterLikes.length;
-    }
+    this._element.querySelector('.elements__heart-count').textContent = this._counterLikes;
     return this._element;
   }
 }

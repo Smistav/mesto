@@ -13,7 +13,7 @@ export default class Api {
       });
   }
   addNewCard({ name, link }) {
-    fetch(this._baseUrl + '/cards', {
+    return fetch(this._baseUrl + '/cards', {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
@@ -21,7 +21,7 @@ export default class Api {
         link
       })
     })
-      .then((res) => {
+      .then(res => {
         if (res.ok) {
           return res.json();
         }
@@ -54,7 +54,7 @@ export default class Api {
       });
   }
   deleteCard(id) {
-    fetch(this._baseUrl + '/cards/' + id, {
+    return fetch(this._baseUrl + '/cards/' + id, {
       method: 'DELETE',
       headers: this._headers,
     })

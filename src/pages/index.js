@@ -56,18 +56,23 @@ popupEdit.setEventListeners();
 const popupAdd = new PopupWithForm({
   popupSelector: popupAddSelector,
   handleFormSubmit: (input) => {
-    const card = new Card({
-      card: input,
-      handleCardClick: (name, image) => {
-        return popupImg.open(name, image);
-      },
-      handleCardClickTrash: (element) => {
-        return popupConfirm.open(element);
-      }
-    }, cardTemplate, user);
-    const cardElement = card.generateCard();
-    cardList.addItem(cardElement);
-    api.addNewCard(input);
+    api.addNewCard(input)
+      .then(res => {
+        const card = new Card({
+          card: res,
+          handleCardClick: (name, image) => {
+            return popupImg.open(name, image);
+          },
+          handleCardClickTrash: (element) => {
+            return popupConfirm.open(element);
+          }
+        }, cardTemplate, user);
+        const cardElement = card.generateCard();
+        cardList.addItem(cardElement);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 });
 
@@ -82,6 +87,13 @@ popupImg.setEventListeners();
 const popupConfirm = new PopupConfirm(popupConfirmSelector);
 popupConfirm.setEventListeners();
 
+api.deleteCard()
+  .then((res) => {
+
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // Initialization Card
 api.getInitialCards()
