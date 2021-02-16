@@ -1,9 +1,11 @@
 import Popup from '../components/Popup.js'
 export default class PopupWithForm extends Popup {
-  constructor({ popupSelector, handleFormSubmit }) {
+  constructor({ popupSelector, handleFormSubmit, handleClickButton }) {
     super(popupSelector);
     this._handleFormSubmit = handleFormSubmit;
     this._form = this._popupSelector.querySelector('.popup__container');
+    this._buttonPopup = this._popupSelector.querySelector('.popup__button');
+    this._handleClickButton = handleClickButton;
   }
   _getInputValues() {
     this._inputList = this._popupSelector.querySelectorAll('.popup__input');
@@ -14,6 +16,19 @@ export default class PopupWithForm extends Popup {
 
     return this._formInput
   }
+  openConfirm(element, cardId) {
+    super.open();
+    this._element = element;
+    this._cardId = cardId._id;
+  }
+
+  setEventListenersConfirm() {
+    this._buttonPopup.addEventListener('click', () => {
+      this._handleClickButton(this._element, this._cardId);
+      this.closeConfirm();
+    }, true);
+  }
+
   setEventListeners() {
     super.setEventListeners();
     this._form.addEventListener('submit', (evt) => {
@@ -25,5 +40,8 @@ export default class PopupWithForm extends Popup {
   close() {
     super.close();
     this._form.reset();
+  }
+  closeConfirm() {
+    super.close();
   }
 }

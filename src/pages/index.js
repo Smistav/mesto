@@ -10,7 +10,6 @@ import Card from '../components/Card.js'
 import FormValidator from '../components/FormValidator.js'
 import Section from '../components/Section.js'
 import UserInfo from '../components/UserInfo.js'
-import PopupConfirm from '../components/PopupConfirm.js'
 import PopupWithImage from '../components/PopupWithImage.js'
 import PopupWithForm from '../components/PopupWithForm.js'
 
@@ -64,7 +63,7 @@ const popupAdd = new PopupWithForm({
             return popupImg.open(name, image);
           },
           handleCardClickTrash: (element) => {
-            return popupConfirm.open(element);
+            return popupConfirm.openConfirm(element);
           },
           handleCardClickHeart: () => {
             if (card.isLike()) {
@@ -93,7 +92,9 @@ const popupImg = new PopupWithImage(popupImgSelector);
 popupImg.setEventListeners();
 
 // Initialization PopupConfirm
-const popupConfirm = new PopupConfirm({
+const popupConfirm = new PopupWithForm({
+  popupSelector: popupConfirmSelector,
+  handleFormSubmit: () => { },
   handleClickButton: (element, id) => {
     api.deleteCard(id)
       .then(() => {
@@ -103,8 +104,8 @@ const popupConfirm = new PopupConfirm({
         console.log(err);
       });
   }
-}, popupConfirmSelector);
-popupConfirm.setEventListeners();
+});
+popupConfirm.setEventListenersConfirm();
 
 // Initialization Card
 api.getInitialCards()
@@ -118,7 +119,7 @@ api.getInitialCards()
             return popupImg.open(name, image);
           },
           handleCardClickTrash: (element) => {
-            return popupConfirm.open(element, cardItem);
+            return popupConfirm.openConfirm(element, cardItem);
           },
           handleCardClickHeart: () => {
             if (card.isLike()) {
