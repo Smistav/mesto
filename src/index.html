@@ -13,7 +13,10 @@
   </header>
   <main>
     <section class="profile">
-      <img src="#" alt="#" class="profile__img">
+      <div class="profile__avatar">
+        <img src="#" alt="#" class="profile__img">
+
+      </div>
       <div class="profile__info">
         <h1 class="profile__name">undefined</h1>
         <button type="button" class="profile__edit-button"></button>
@@ -83,6 +86,19 @@
     </div>
   </div>
   <!-- popupConfirm -->
+  <!-- popupAvatar  -->
+  <div class="popup popup_form_avatar">
+    <form name="form_avatar" class="popup__container popup__container_form_isform" novalidate>
+      <button type="button" class="popup__close"></button>
+      <h4 class="popup__heading popup__heading_form_avatar">Обновить Аватар</h4>
+      <div class="popup__input-container">
+        <input id="link-avatar" name="name" class="popup__input" type="url" placeholder="ссылка на аватар" required>
+        <span id="link-avatar-error" class="popup__error"></span>
+      </div>
+      <button type="submit" name="button" class="popup__button">Сохранить</button>
+    </form>
+  </div>
+  <!-- popupAvatar -->
   <!-- card template  -->
   <template id="elem">
     <figure class="elements__item">
