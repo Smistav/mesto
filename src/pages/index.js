@@ -65,6 +65,17 @@ const popupAdd = new PopupWithForm({
           },
           handleCardClickTrash: (element) => {
             return popupConfirm.open(element);
+          },
+          handleCardClickHeart: () => {
+            if (card.isLike()) {
+              api.removeLike(res._id)
+                .then(res => card.removeLike(res.likes))
+                .catch(err => console.log(err))
+            } else {
+              api.addLike(res._id)
+                .then(res => card.addLike(res.likes))
+                .catch(err => console.log(err))
+            };
           }
         }, cardTemplate, user);
         const cardElement = card.generateCard();
@@ -108,6 +119,17 @@ api.getInitialCards()
           },
           handleCardClickTrash: (element) => {
             return popupConfirm.open(element, cardItem);
+          },
+          handleCardClickHeart: () => {
+            if (card.isLike()) {
+              api.removeLike(cardItem._id)
+                .then(res => card.removeLike(res.likes))
+                .catch(err => console.log(err))
+            } else {
+              api.addLike(cardItem._id)
+                .then(res => card.addLike(res.likes))
+                .catch(err => console.log(err))
+            };
           }
         }, cardTemplate, user);
         const cardElement = card.generateCard();
