@@ -37,6 +37,7 @@ const user = new UserInfo(profileNameSelector, profileAboutSelector);
 api.getUserInfo()
   .then((userInfo) => {
     user.setUserInfo(userInfo);
+    user.setUserAvatar(userInfo.avatar);
   })
   .catch((err) => {
     console.log(err);
@@ -95,8 +96,7 @@ popupImg.setEventListeners();
 // Init PopupConfirm
 const popupConfirm = new PopupWithForm({
   popupSelector: popupConfirmSelector,
-  handleFormSubmit: () => { },
-  handleClickButton: (element, id) => {
+  handleFormSubmit: (element, id) => {
     api.deleteCard(id)
       .then(() => {
         element.remove();
@@ -111,10 +111,15 @@ popupConfirm.setEventListenersConfirm();
 // Init popupAvatar
 const popupAvatar = new PopupWithForm({
   popupSelector: popupAvatarSelector,
-  handleFormSubmit: () => {
-
-  },
-  handleClickButton: () => { }
+  handleFormSubmit: (avatar) => {
+    api.setUserAvatar(avatar.link)
+      .then(() => {
+        user.setUserAvatar(avatar.link);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 });
 popupAvatar.setEventListeners();
 

@@ -12,10 +12,10 @@ export default class UserInfo {
   setUserInfo(input) {
     this._name.textContent = input.name;
     this._job.textContent = input.about;
-    if (input.avatar) {
-      this._avatar.src = input.avatar;
-      this._avatar.alt = input.name;
-    }
     this._id = input._id;
+  }
+  setUserAvatar(input) {
+    this._avatar.src = input;
+    this._avatar.alt = this._name.textContent;
   }
 }

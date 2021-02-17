@@ -91,10 +91,10 @@ export default class Api {
       });
   }
   setUserAvatar(avatar) {
-    return fetch(this._baseUrl + '/users/me/' + avatar, {
+    return fetch(this._baseUrl + '/users/me/avatar', {
       method: 'PATCH',
       headers: this._headers,
-      body: JSON.stringify(avatar)
+      body: JSON.stringify({ avatar })
     })
       .then(res => {
         if (res.ok) {
