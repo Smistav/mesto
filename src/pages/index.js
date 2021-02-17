@@ -47,8 +47,16 @@ api.getUserInfo()
 const popupEdit = new PopupWithForm({
   popupSelector: popupEditSelector,
   handleFormSubmit: input => {
-    user.setUserInfo(input);
-    api.setUserInfo(user.getUserInfo())
+    popupEdit.renderLoading(true);
+    api.setUserInfo(input)
+      .then((userInfo) => {
+        user.setUserInfo(userInfo);
+        popupEdit.renderLoading(false);
+        popupEdit.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 });
 popupEdit.setEventListeners();
@@ -57,6 +65,7 @@ popupEdit.setEventListeners();
 const popupAdd = new PopupWithForm({
   popupSelector: popupAddSelector,
   handleFormSubmit: (input) => {
+    popupAdd.renderLoading(true);
     api.addNewCard(input)
       .then(res => {
         const card = new Card({
@@ -81,6 +90,8 @@ const popupAdd = new PopupWithForm({
         }, cardTemplate, user);
         const cardElement = card.generateCard();
         cardList.addItem(cardElement);
+        popupAdd.renderLoading(false);
+        popupAdd.close();
       })
       .catch((err) => {
         console.log(err);
@@ -112,9 +123,12 @@ popupConfirm.setEventListenersConfirm();
 const popupAvatar = new PopupWithForm({
   popupSelector: popupAvatarSelector,
   handleFormSubmit: (avatar) => {
+    popupAvatar.renderLoading(true);
     api.setUserAvatar(avatar.link)
       .then(() => {
         user.setUserAvatar(avatar.link);
+        popupAvatar.renderLoading(false);
+        popupAvatar.close();
       })
       .catch((err) => {
         console.log(err);

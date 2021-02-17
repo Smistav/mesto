@@ -21,6 +21,15 @@ export default class PopupWithForm extends Popup {
     this._cardId = cardId._id;
   }
 
+  renderLoading(isLoading) {
+    if (isLoading) {
+      this._buttonPopup.textContent = 'Сохранение...';
+    }
+    else {
+      this._buttonPopup.textContent = 'Сохранить';
+    }
+  }
+
   setEventListenersConfirm() {
     this._buttonPopup.addEventListener('click', () => {
       this._handleFormSubmit(this._element, this._cardId);
@@ -33,7 +42,6 @@ export default class PopupWithForm extends Popup {
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues());
-      this.close();
     });
   }
   close() {
