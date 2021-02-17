@@ -108,9 +108,12 @@ popupImg.setEventListeners();
 const popupConfirm = new PopupWithForm({
   popupSelector: popupConfirmSelector,
   handleFormSubmit: (element, id) => {
+    popupConfirm.renderLoadingConfirm(true);
     api.deleteCard(id)
       .then(() => {
         element.remove();
+        popupConfirm.renderLoadingConfirm(false);
+        popupConfirm.closeConfirm();
       })
       .catch((err) => {
         console.log(err);

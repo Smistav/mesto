@@ -30,10 +30,19 @@ export default class PopupWithForm extends Popup {
     }
   }
 
+  renderLoadingConfirm(isLoading) {
+    if (isLoading) {
+      this._buttonPopup.textContent = 'Удаление...';
+    }
+    else {
+      this._buttonPopup.textContent = 'Да';
+    }
+  }
+
   setEventListenersConfirm() {
     this._buttonPopup.addEventListener('click', () => {
       this._handleFormSubmit(this._element, this._cardId);
-      this.closeConfirm();
+      //this.closeConfirm();
     }, true);
   }
 
