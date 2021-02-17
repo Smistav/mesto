@@ -2,7 +2,7 @@ export {
   constValid, ESCAPE, cardSection,
   popupEditSelector, popupAddSelector, popupImgSelector, popupConfirmSelector,
   editButton, addButton, cardTemplate, profileNameSelector, profileAboutSelector,
-  inputName, inputJob, editAvatar, popupAvatarSelector
+  inputName, inputJob, editAvatar, popupAvatarSelector, profileAvatarSelector
 }
 
 const constValid = {
@@ -38,3 +38,4 @@ const inputName = '.popup__input[name="name"]';
 const inputJob = '.popup__input[name="about"]';
 // edit Avatar
 const editAvatar = '.profile__avatar';
+const profileAvatarSelector = '.profile__img';

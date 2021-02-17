@@ -45,12 +45,12 @@ export default class Card {
 
   addLike(likes) {
     this._elementLike.classList.add('elements__heart-button_active');
-    this._cardLikes.push(this._user);
+    this._cardLikes = likes;
     this._elementCounterLikes.textContent = likes.length;
   }
   removeLike(likes) {
     this._elementLike.classList.remove('elements__heart-button_active');
-    this._cardLikes.pop(this._user);
+    this._cardLikes = likes;
     this._elementCounterLikes.textContent = likes.length;
   }
   generateCard() {
